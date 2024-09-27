@@ -1,0 +1,39 @@
+---
+    import Tiltarrow from './Tiltarrow.astro'
+    let images = [
+        {
+            src: 'https://cdn.discordapp.com/attachments/1008331290124242984/1289319156910526636/profile-pic_2.png?ex=66f86389&is=66f71209&hm=209ab275c673894154d0abec45acd80671360c3d616b0d4c09898930a06c74ef&',
+            alt: 'Aagam Jain',
+        },
+        {
+            src: 'https://cdn.discordapp.com/attachments/1008331290124242984/1289318827603136613/Screenshot_2024-09-27_183714.png?ex=66f8633a&is=66f711ba&hm=def3b437ab8bda45765c5e786d09a6ab712fe7844b38724e35fc717daa63543f&',
+            alt: 'Yash Patil'
+        },
+        {
+            src: 'https://cdn.discordapp.com/attachments/1008331290124242984/1289318827250679808/Screenshot_2024-09-27_183646.png?ex=66f8633a&is=66f711ba&hm=71dba243c4021473e53ee072885cc797d9d1664ec054ea97155f4a26ab96280d&',
+            alt: 'Rohit Kushwaha'
+        }
+    ]
+---
+
+<main class="text-white mt-20">
+    <div class="">
+        <span class="text-9xl tracking-tighter">Where De<span class="font-tickerbit">s</span>igners <span class="font-tickerbit">&</span></span>
+    </div>
+    <div class="flex items-center gap-5">
+        <div class="flex 2xl:flex-row flex-col items-end mt-5">
+            {images.map((image, index) => (
+                <img src={image.src} alt={image.alt} class={`${index !== 0 ? "-ml-3" : ""} size-[4.5rem] rounded-full hover:-translate-y-1 transition-all z-${index}`} />
+            ))}
+            <div class="size-[4.5rem] -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white">
+                <Tiltarrow />
+            </div>
+        </div>
+        <div>
+            <span class="text-9xl tracking-tighter">De<span class="font-tickerbit">v</span>elopers connect</span>
+        </div>
+    </div>
+    <div class="text-[32px] font-thin mt-12 text-white/80 font-pp">
+        <span>Unlock creativity and innovation through collaboration, learning, & community <br> support. Join the next generation of makers shaping the digital world.</span>
+    </div>
+</main>
