@@ -1,6 +1,6 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,52 +8,65 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Join De, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!" />
-		<meta name="keywords" content="design, development, community, collaboration, projects, workshops, events, creators" />
-		<meta name="author" content="De" />
-		<meta name="theme-color" content="#8842ea" />
-		<meta name="robots" content="index, follow" />
-		<meta name="googlebot" content="index, follow" />
-		<link  href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Join De, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+    />
+    <meta
+      name="keywords"
+      content="design, development, community, collaboration, projects, workshops, events, creators"
+    />
+    <meta name="author" content="De" />
+    <meta name="theme-color" content="#8842ea" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <link
+      href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="0c560206-7fba-45d9-9f57-5d1870738ef1"></script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #000000;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-	body {
-		font-family: 'PP Neue Montreal', sans-serif;
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: #000000;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+  body {
+    font-family: "PP Neue Montreal", sans-serif;
+  }
 </style>
