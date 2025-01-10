@@ -1,16 +1,22 @@
 ---
-import Discord from "./icons/discord.astro"
-import Linkedin from "./icons/linkedin.astro"
-import Instagram from "./icons/instagram.astro"
+import Discord from "./icons/discord.astro";
+import Linkedin from "./icons/linkedin.astro";
+import Instagram from "./icons/instagram.astro";
 ---
 
-<footer class="text-white">
-    <div class="flex items-center justify-between">
-        <span class="text-6xl">Connect. Collaborate. Create.</span>
-        <div class="flex gap-4 items-center ">
-            <Discord class="size-8 hover:cursor-pointer" />
-            <Linkedin  class="size-8 hover:cursor-pointer"/>
-            <Instagram class="size-8 hover:cursor-pointer" />
-        </div>
+<footer class="text-white w-full">
+  <div class="flex items-center justify-between">
+    <span class="md:text-6xl text-lg">Connect. Collaborate. Create.</span>
+    <div class="flex gap-4 items-center">
+      <a href="https://dsc.gg/dialogh" target="_blank">
+        <Discord class="size-8 hover:cursor-pointer" />
+      </a>
+      <a href="" class="opacity-50">
+        <Linkedin class="size-8 hover:cursor-pointer" />
+      </a>
+      <a href="" class="opacity-50">
+        <Instagram class="size-8 hover:cursor-pointer" />
+      </a>
     </div>
+  </div>
 </footer>

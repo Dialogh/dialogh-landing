@@ -1,48 +1,45 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import { Image } from 'astro:assets';
-import GradientImage from "../assets/images/G.png"
-import Navbar from '../components/navbar.astro';
-import Hero from '../components/Hero.astro';
-import CanvasCusror from '../components/react/canvas-cursor';
-import Footer from '../components/Footer.astro';
-import Particles from '../components/react/particles';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
+import GradientImage from "../assets/images/G.png";
+import Navbar from "../components/navbar.astro";
+import Hero from "../components/Hero.astro";
+import CanvasCusror from "../components/react/canvas-cursor";
+import Footer from "../components/Footer.astro";
+import Particles from "../components/react/particles";
 ---
 
-<Layout title="De - community">
-	<div class="h-dvh relative overflow-y-hidden">
-		<CanvasCusror client:only />
-		<div class="absolute size-full -z-10">
-			<Particles client:only/>
-		</div>
-		<div class="absolute -z-20 bottom-0 w-full  sm:right-auto -right-96 ">
-			<Image
-			src={GradientImage}
-			alt="De community hero image"
-			class="object-cover w-full h-full"
-			/>
-		</div>
-		<div class="w-5/6 h-full mx-auto">
-			<Navbar />
-			<Hero />
-		</div>
-		<div class="sticky bottom-8  w-5/6 mx-auto">
-			<Footer />
-		</div>
-	</div>
+<Layout title="Dialogh - Community for tech">
+  <div class="h-dvh relative overflow-y-hidden">
+    <CanvasCusror client:only />
+    <!-- <div class="absolute size-full -z-10 hidden lg:block">
+      <Particles client:only />
+    </div> -->
+    <div
+      class="absolute -z-20 bottom-0 w-full h-full sm:right-auto background-gradient -right-96"
+    >
+    </div>
+    <div class="w-5/6 h-full mx-auto">
+      <Navbar />
+      <Hero />
+    </div>
+    <div class="sticky bottom-8 w-5/6 mx-auto">
+      <Footer />
+    </div>
+  </div>
 </Layout>
 
 <style>
-@font-face {
+  @font-face {
     font-family: "tickerbit";
-    src: url("/fonts/tickerbit-font.woff2")  format('woff2');
-	font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+    src: url("/fonts/tickerbit-font.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
-.tickerbit {
-	font-family: "tickerbit", sans-serif;
-}
+  .tickerbit {
+    font-family: "tickerbit", sans-serif;
+  }
 </style>

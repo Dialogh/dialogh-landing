@@ -1,196 +1,63 @@
 ---
 import { Image } from "astro:assets";
-import Logo from "../assets/images/De_.png";
-import Tiltarrow from './Tiltarrow.astro';
+// import Logo from "../assets/images/De_.png";
+import Dialogh from "../assets/images/Dialogh.png";
+import Tiltarrow from "./Tiltarrow.astro";
 ---
 
-<nav class="flex items-center justify-between">
-    <Image src={Logo} alt="De logo" class="size-20" />
+<nav class="flex items-center justify-between pt-4">
+  <Image src={Dialogh} alt="De logo" class="h-8 w-fit" />
+  <!-- <div
+    class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white/50 to-white/80"
+  >
+    Dialogh.
+  </div> -->
 
-    <div class="flex items-center hover:cursor-pointer">
-        <button class="button button-item">
-            <span class="button-bg">
-              <span class="button-bg-layers">
-                <span class="button-bg-layer button-bg-layer-1 -purple"></span>
-                <span class="button-bg-layer button-bg-layer-2 -turquoise"></span>
-                <span class="button-bg-layer button-bg-layer-3 -yellow"></span>
-              </span>
-            </span>
-            <span class="button-inner">
-              <span class="button-inner-static">JOIN NOW</span>
-              <span class="button-inner-hover">JOIN NOW</span>
-            </span>
-          </button>
-          <button class="button2 button-item px-4">
-            <span class="button-bg">
-              <span class="button-bg-layers">
-                <span class="button-bg-layer button-bg-layer-1 -purple"></span>
-                <span class="button-bg-layer button-bg-layer-2 -turquoise"></span>
-                <span class="button-bg-layer button-bg-layer-3 -yellow"></span>
-              </span>
-            </span>
-            <span class="button-inner">
-              <span class="button-inner-static">
-                <Tiltarrow class="size-3.5" />
-              </span>
-              <span class="button-inner-hover">
-                <Tiltarrow  class="size-3.5"/>
-              </span>
-            </span>
-          </button>
-    </div>
-      
+  <a
+    class="button flex items-center"
+    href="https://dsc.gg/dialogh"
+    target="_blank"
+  >
+    <span class="button-content font-medium uppercase">Join Now </span>
+  </a>
 </nav>
 
-
 <style>
-    button {
-  all: unset;
-}
+  /* From Uiverse.io by Madflows */
+  .button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 1.5rem;
+    border-radius: 1.5rem;
+    background: #413f50;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+  }
 
-.button {
-  position: relative;
-  display: inline-flex;
-  height: 2.6rem;
-  align-items: center;
-  border-radius: 9999px;
-  padding-left: 1.3rem;
-  padding-right: 1.5rem;
-  font-family: Segoe UI;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fafaf6;
-  letter-spacing: -0.06em;
-}
-.button2 {
-  position: relative;
-  display: inline-flex;
-  height: 2.6rem;
-  size: 10px;
-  align-items: center;
-  padding-left: 15px;
-  margin-left: -12px;
-  padding-right: 15px;
-  border-radius: 9999px;
-  font-family: Segoe UI;
-  font-size: 1.2rem;
-  font-weight: 640;
-  color: #fafaf6;
-  letter-spacing: -0.06em;
-}
+  .button:hover::before {
+    transform: scaleX(1);
+  }
 
-.button-item {
-  background-color: transparent;
-  color: #1d1d1f;
-}
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
 
-.button-item .button-bg {
-  border-color: #FFF;
-  background-color: #FFF;
-}
-
-.button-inner,
-.button-inner-hover,
-.button-inner-static {
-  pointer-events: none;
-  display: block;
-}
-
-.button-inner {
-  position: relative;
-}
-
-.button-inner-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transform: translateY(70%);
-}
-
-.button-bg {
-  overflow: hidden;
-  border-radius: 2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(1);
-  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.button-bg,
-.button-bg-layer,
-.button-bg-layers {
-  display: block;
-}
-
-.button-bg-layers {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: -60%;
-  aspect-ratio: 1 / 1;
-  width: max(200%, 10rem);
-}
-
-.button-bg-layer {
-  border-radius: 9999px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(0);
-}
-
-.button-bg-layer.-purple {
-  background-color: rgba(163, 116, 255);
-}
-
-.button-bg-layer.-turquoise {
-  background-color: rgb(23, 74, 241);
-}
-
-.button-bg-layer.-yellow {
-  background-color: #FFF;
-}
-
-.button:hover .button-inner-static {
-  opacity: 0;
-  transform: translateY(-70%);
-  transition:
-    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 0.3s linear;
-}
-
-.button:hover .button-inner-hover {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.button:hover .button-bg-layer {
-  transition:
-    transform 1.3s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 0.3s linear;
-}
-
-.button:hover .button-bg-layer-1 {
-  transform: scale(1);
-}
-
-.button:hover .button-bg-layer-2 {
-  transition-delay: 0.1s;
-  transform: scale(1);
-}
-
-.button:hover .button-bg-layer-3 {
-  transition-delay: 0.2s;
-  transform: scale(1);
-}
-
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(82.3deg, #ffa7e1 10.8%, #312dd1 94.3%);
+    transition: all 0.475s;
+  }
 </style>
