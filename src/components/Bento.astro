@@ -1,0 +1,205 @@
+---
+import { Image } from "astro:assets";
+import HeartImage from "../assets/images/heart.png";
+import { cn } from "../lib/utils";
+import GameComponent from "./react/GameComponent.jsx";
+import User from "./User.astro";
+let socials = [
+  {
+    title: "Instagram",
+    link: "https://instagram.com/dialogh.in",
+    gradientFrom: "from-pink-500",
+    gradientTo: "to-yellow-500",
+  },
+  {
+    title: "Linkedin",
+    link: "",
+    gradientFrom: "from-blue-500",
+    gradientTo: "to-gray-500",
+  },
+  {
+    title: "Discord",
+    link: "https://dsc.gg/dialogh",
+    gradientFrom: "from-indigo-500",
+    gradientTo: "to-purple-500",
+  },
+];
+
+let images = [
+  {
+    alt: "Sky Scripter",
+    src: "https://cdn.discordapp.com/avatars/1167814835535364099/2a6d8e291966ec19137f0ae57687f831.png?format=webp&quality=lossless",
+  },
+  {
+    alt: "Vachan",
+    src: "https://cdn.discordapp.com/avatars/1260589540251275264/e3efb537ad71e4a03d78d193c6814361.png?size=256",
+  },
+  {
+    alt: "Saizo",
+    src: "https://cdn.discordapp.com/avatars/532177714203852800/7e0cf3c3ef718aaff0559d5211c8444d.png?size=256",
+  },
+  {
+    alt: "devesh",
+    src: "https://cdn.discordapp.com/avatars/559928690604113940/50a629c000db0fd6b976b97bd0e6c5da.png?size=256",
+  },
+  {
+    alt: "anant",
+    src: "https://cdn.discordapp.com/avatars/1044102999313764372/3a54ab91f941f90243249ef193735131.png?size=256",
+  },
+  {
+    alt: "Super comic being",
+    src: "https://cdn.discordapp.com/avatars/374105692690448386/cae8a443ca930cb5e02d5968ec60f48b.png?size=256",
+  },
+  {
+    alt: "povesh",
+    src: "https://cdn.discordapp.com/avatars/347999615783534592/aa40686c7d4e5909a693af8031613197.png?size=256",
+  },
+  {
+    alt: "nick",
+    src: "https://cdn.discordapp.com/avatars/1014875193396703302/bda9787977522c39f32e14438d9575c7.png?size=256",
+  },
+];
+---
+
+<section class="sm:w-5/6 mt-48 px-4 mx-auto my-12">
+  <div
+    class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 "
+  >
+    <div class="col-span-1  sm:col-span-2 md:col-span-3 w-full">
+      <div class="grid sm:grid-rows-3 gap-4 w-full">
+        <div class="rounded-lg md:row-span-2 w-full  sm:p-4 p-0">
+          <div>
+            <span class="lg:text-5xl xl:text-6xl md:text-5xl text-4xl"
+              >Be a part of our Origin Story</span
+            >
+            <div class="bg-[#D9D9D933]/20 rounded-full sm:h-6 h-4 mt-4">
+              <div
+                class="bg-gradient-to-r from-[#FFA7E1] to-[#22189E] sm:h-6 h-4 w-[90%] rounded-full"
+              >
+              </div>
+            </div>
+            <div class="flex text-xs justify-between mt-1 items-center">
+              <span class="text-white/60"> 200 founding members only </span>
+              <span class="text-[#FFA7E1]"> 20 Members remaining </span>
+            </div>
+            <div class="mt-8 flex sm:flex-row flex-col sm:w-full  sm:justify-between sm:items-center">
+              <User images={images} />
+              <a
+                href="https://www.dsc.gg/dialogh"
+                target="_blank"
+                class="bg-[#22189E] w-fit sm:mt-3 mt-6 py-2 px-6 rounded-full flex items-center"
+              >
+                Join the Founding Team Today
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  class="ml-2"
+                >
+                  <path d="M7 10h10l-4-4v3H0v2h13v3l4-4H7z" fill="currentColor"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="md:grid grid-cols-5  sm:mt-0 mt-24 w-full sm:gap-4 flex flex-col gap-2">
+          <div class="md:col-span-2 w-full md:h-auto h-32 rounded-lg bg-[#22189E]">
+            <div
+              class="text-2xl w-full text-transparent bg-clip-text bg-gradient-to-r from-white to-[#999999] flex flex-col items-center justify-center h-full"
+            >
+              <div class="">
+                <p>
+                  We know you love <Image
+                    src={HeartImage}
+                    alt="De logo"
+                    class="w-5 inline-block"
+                  />
+                </p>
+                <p>the tech the way we do</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="md:col-span-2 col-span-2 md:h-auto h-32 rounded-lg bg-white/10"
+          >
+            <div class="flex flex-col items-center justify-center w-full h-full">
+              <div>
+                <p>{new Date().getFullYear()} Dialogh</p>
+                <p
+                  class="text-blue-400 border-b border-transparent w-fit hover:border-blue-400"
+                >
+                  Connect@dialogh.in
+                </p>
+                <p>Built by Dialogh core team</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-1 bg-white/10 rounded-lg">
+            <div
+              class="flex flex-col w-full items-center justify-center h-full"
+            >
+              <div class="flex flex-col sm:p-0 p-2 gap-1">
+                {
+                  socials.map((social) => (
+                    <a
+                      href={social.link}
+                      class={cn(
+                        " text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r transition-all",
+                        social.gradientFrom,
+                        social.gradientTo
+                      )}
+                      target="_blank"
+                    >
+                      {social.title}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-white/10 relative w-full hidden lg:block overflow-hidden rounded-lg"
+    >
+      <canvas
+        id="animatedBackground"
+        class="absolute pointer-events-none inset-0 w-full h-full"></canvas>
+      <script>
+        const canvas = document.getElementById("animatedBackground");
+        const context = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const colors = [
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(153, 102, 255, 0.5)",
+        ];
+
+        function draw() {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          const time = new Date().getTime() * 0.002;
+          for (let i = 0; i < 5; i++) {
+            const angle = time + (i * Math.PI) / 2.5;
+            const x = Math.sin(angle) * 192 + canvas.width / 2;
+            const y = Math.cos(angle * -1) * 192 + canvas.height / 2;
+            context.beginPath();
+            context.arc(x, y, 400, 0, Math.PI * 5000);
+            context.fillStyle = colors[i % colors.length];
+            context.filter = "blur(150px)";
+            context.fill();
+          }
+          requestAnimationFrame(draw);
+        }
+
+        draw();
+      </script>
+    </div>
+  </div>
+</section>
