@@ -1,9 +1,8 @@
 ---
-import Tiltarrow from "./Tiltarrow.astro";
+import User from "./User.astro";
 import Rohit from "../assets/images/Rohit.png";
 import Yash from "../assets/images/Yash.png";
 import Aagam from "../assets/images/Aagam.png";
-import { Image } from "astro:assets";
 let images = [
   {
     src: Yash,
@@ -22,33 +21,23 @@ let images = [
 
 <main class="text-white mt-20">
   <div class="">
-    <span class="lg:text-9xl text-5xl tracking-tighter"
+    <span class="xl:text-8xl  lg:text-8xl text-5xl tracking-tighter"
       >Let's Evolve With
     </span>
     <div
       class="flex md:flex-row flex-col lg:items-center items-start md:gap-5 gap-4"
     >
-      <div class="flex relative items-end mt-4">
-        {
-          images.map((image, index) => (
-            <Image
-              src={image.src}
-              alt={image.alt}
-              class={`${index !== 0 ? "-ml-3" : ""}  lg:size-[4.5rem] size-12 relative rounded-full hover:-translate-y-1 transition-all `}
-            />
-          ))
-        }
-        <div
-          class="lg:size-[4.5rem] size-12 flex-shrink-0 -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white"
-        >
-          <Tiltarrow />
-        </div>
+      <div class="md:flex hidden">
+        <User size="large" images={images} />
       </div>
       <div>
-        <span class="lg:text-9xl text-5xl tracking-tighter">
-          Technology, Together</span
+        <span class="xl:text-8xl  lg:text-8xl text-5xl tracking-tighter">
+          Tech, Together</span
         >
       </div>
+    </div>
+    <div class="md:hidden flex">
+      <User size="small" images={images} />
     </div>
     <div
       class="md:text-[32px] text-xl md:font-thin font-regular mt-12 text-white/80 font-pp"
