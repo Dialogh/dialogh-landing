@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import HeartImage from "../assets/images/heart.png";
 import { cn } from "../lib/utils";
-import GameComponent from "./react/GameComponent.jsx";
 import User from "./User.astro";
 let socials = [
   {
@@ -59,6 +58,7 @@ let images = [
     src: "https://cdn.discordapp.com/avatars/1014875193396703302/bda9787977522c39f32e14438d9575c7.png?size=256",
   },
 ];
+
 ---
 
 <section class="sm:w-5/6 mt-48 px-4 mx-auto my-12">
@@ -169,7 +169,7 @@ let images = [
         id="animatedBackground"
         class="absolute pointer-events-none inset-0 w-full h-full"></canvas>
       <script>
-        const canvas = document.getElementById("animatedBackground");
+        const canvas = document.getElementById("animatedBackground") as HTMLCanvasElement;
         const context = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;

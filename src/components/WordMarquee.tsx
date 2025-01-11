@@ -63,7 +63,7 @@ export default function MarqueeDemo() {
     <div className="relative flex py-12 w-full flex-col items-center justify-center overflow-hidden rounded-lg  ">
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review) => (
-          <Words key={review.username} {...review} />
+          <Words key={review.name} {...review} />
         ))}
       </Marquee>
 
