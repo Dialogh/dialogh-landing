@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import Tiltarrow from "./Tiltarrow.astro";
+const { images, size } = Astro.props;
+
+const imageSizeClass =
+  size === "large"
+    ? "lg:size-[4.5rem] md:size-12 size-10"
+    : "xl:size-[3rem] lg:size-[2.5rem] md:size-10 size-8";
+const tiltArrowSizeClass =
+  size === "large"
+    ? "lg:size-[4.5rem] md:size-12 size-10"
+    : "xl:size-[3rem] lg:size-[2.5rem] md:size-10 size-8";
+---
+
+<div class="flex relative items-end mt-4">
+  {
+    images?.map((image, index) => (
+      <Image
+        src={image?.src}
+        alt={image?.alt}
+        inferSize={true}
+        class={`${index !== 0 ? "-ml-3" : ""} ${imageSizeClass}  relative rounded-full hover:-translate-y-1 transition-all `}
+      />
+    ))
+  }
+  <div
+    class={`${tiltArrowSizeClass} flex-shrink-0 -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white `}
+  >
+    <Tiltarrow />
+  </div>
+</div>

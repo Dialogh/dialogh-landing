@@ -1,0 +1,29 @@
+---
+const list = [
+    'Exclusive founding member role',
+    'Direct input on community features & direction',
+    'Free access to premium workshops & events',
+    'Private founding members channel & VIP support channel'
+]
+---
+
+
+
+<section class="flex lg:flex-row flex-col justify-between w-full sm:w-5/6 px-4 mx-auto py-20">
+    <div>
+    <span class="lg:text-5xl sm:pb-0 pb-6 xl:text-6xl md:text-4xl text-2xl block lg:inline">
+        Exclusive Founding 
+        <span class="hidden lg:inline"> <br /> </span>
+        Member Privileges
+    </span>
+</div>  
+    <div class="flex-shrink-0">
+        <ul>
+            {
+                list.map((item) => (
+                    <li class="text-base sm:ml-0 ml-4  list-disc text-white/60">{item}</li>
+                ))
+            }
+        </ul>
+    </div>
+</section>

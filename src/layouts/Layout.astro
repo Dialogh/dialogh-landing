@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css'
 interface Props {
   title: string;
 }
@@ -12,21 +13,33 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Join De, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
     />
+    <meta name="og:title" content="Dialogh" />
+    <meta name="og:description" content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://dialogh.in" />
+    <meta name="og:image" content="https://dialogh.in/og.png" />
     <meta
       name="keywords"
       content="design, development, community, collaboration, projects, workshops, events, creators"
     />
-    <meta name="author" content="De" />
+    <meta name="author" content="Dialogh" />
     <meta name="theme-color" content="#8842ea" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
       rel="stylesheet"
     />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href="https://dialogh.in" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dialogh" />
+    <meta name="twitter:description" content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!" />
+    <meta name="twitter:image" content="https://dialogh.in/og.png" />
+    <meta property="og:site_name" content="Dialogh" />
+    <meta property="og:locale" content="en_US" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <script

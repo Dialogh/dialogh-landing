@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets"
+import bgImage from "../assets/images/bg-image.png"
+
+let features = [
+    {
+        title: 'Learn & Grow',
+        description: 'Access a curated ecosystem of knowledge sharing, where industry experts and fellow innovators come together. From hands-on workshops to deep-dive discussions, your growth journey accelerates here.'
+    }, {
+        title: 'Collaborate',
+        description: 'Turn ideas into reality through meaningful connections. Whether you\'re building the next breakthrough app or exploring cutting-edge AI, find like-minded collaborators who share your vision.'
+    },
+    {
+        title: 'Innovate',
+        description: 'Push boundaries and challenge the status quo. Dialogh provides the platform, resources, and support you need to transform your innovative ideas into impactful solutions.'
+    }
+]
+---
+
+
+<section class="w-full py-8">
+<div class="w-full">
+    <Image src={bgImage} alt="De logo" class="w-full h-[40dvh] object-cover" />
+</div>
+<div class="sm:w-5/6 px-4 mx-auto py-20">
+   <div>
+     <span class="text-4xl">Building More Than <span class="text-[#22189E]">Just Another Tech Community</span></span>
+   </div>
+   <div class="grid md:grid-cols-3 my-12 gap-12">
+    {
+        features.map((feature) => (
+            <div class="">
+                <span class="text-2xl ">{feature.title}</span>
+                <p class="text-sm mt-6 text-white/60">{feature.description}</p>
+            </div>
+        ))
+    }
+   </div>
+</div>
+
+</section>
