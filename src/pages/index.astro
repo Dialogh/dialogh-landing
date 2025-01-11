@@ -8,26 +8,40 @@ import Hero from "../components/Hero.astro";
 import CanvasCusror from "../components/react/canvas-cursor";
 import Footer from "../components/Footer.astro";
 import Particles from "../components/react/particles";
+import WordMarquee from "../components/WordMarquee.tsx";
+import About from "../components/About.astro";
+import ExclusiveFounding from "../components/exclusive-founding.astro";
+import Bento from "../components/Bento.astro";
 ---
 
 <Layout title="Dialogh - Community for tech">
-  <div class="h-dvh relative overflow-y-hidden">
-    <CanvasCusror client:only />
-    <!-- <div class="absolute size-full -z-10 hidden lg:block">
+  <section class="w-full">
+    <div class="h-dvh relative overflow-hidden">
+      <div class="lg:block hidden">
+        <CanvasCusror client:only />
+      </div>
+      <!-- <div class="absolute size-full -z-10 hidden lg:block">
       <Particles client:only />
     </div> -->
-    <div
-      class="absolute -z-20 bottom-0 w-full h-full sm:right-auto background-gradient -right-96"
-    >
+      <div
+        class="absolute -z-20 bottom-0 w-full h-full sm:right-auto background-gradient -right-96"
+      >
+      </div>
+      <div class="sm:w-5/6 px-4 h-full mx-auto">
+        <Navbar />
+        <Hero />
+      </div>
+      <div class="sticky bottom-8 w-5/6 sm:w-5/6 px-4 mx-auto">
+        <Footer />
+      </div>
     </div>
-    <div class="w-5/6 h-full mx-auto">
-      <Navbar />
-      <Hero />
+    <div>
+      <WordMarquee client:only />
     </div>
-    <div class="sticky bottom-8 w-5/6 mx-auto">
-      <Footer />
-    </div>
-  </div>
+    <About />
+    <ExclusiveFounding />
+    <Bento />
+  </section>
 </Layout>
 
 <style>
