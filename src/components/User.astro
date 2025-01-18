@@ -20,13 +20,15 @@ const tiltArrowSizeClass =
         src={image?.src}
         alt={image?.alt}
         inferSize={true}
-        class={`${index !== 0 ? "-ml-3" : ""} ${imageSizeClass}  relative rounded-full hover:-translate-y-1 transition-all `}
+        class={`${index !== 0 ? `-ml-3 z-[${index + 10}]` : ""} ${imageSizeClass} relative rounded-full hover:-translate-y-1 transition-all `}
       />
     ))
   }
-  <div
-    class={`${tiltArrowSizeClass} flex-shrink-0 -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white `}
+  <a
+    href="https://dsc.gg/dialogh"
+    target="_blank"
+    class={`${tiltArrowSizeClass} flex-shrink-0 relative  -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white `}
   >
     <Tiltarrow />
-  </div>
+  </a>
 </div>
