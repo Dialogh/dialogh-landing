@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import HeartImage from "../assets/images/heart.png";
 import { cn } from "../lib/utils";
 import User from "./User.astro";
+import Gradient from "./svelte/gradient.svelte";
 let socials = [
   {
     title: "Instagram",
@@ -26,12 +27,12 @@ let socials = [
 
 let images = [
   {
-    alt: "Sky Scripter",
-    src: "https://cdn.discordapp.com/avatars/1167814835535364099/2a6d8e291966ec19137f0ae57687f831.png?format=webp&quality=lossless",
+    alt: "Shiv",
+    src: "https://i.imgur.com/q7Mw8zr.png",
   },
   {
-    alt: "Vachan",
-    src: "https://cdn.discordapp.com/avatars/1260589540251275264/e3efb537ad71e4a03d78d193c6814361.png?size=256",
+    alt: "xingo__",
+    src: "https://i.imgur.com/9z2MWGc.png",
   },
   {
     alt: "Saizo",
@@ -43,7 +44,7 @@ let images = [
   },
   {
     alt: "anant",
-    src: "https://cdn.discordapp.com/avatars/1044102999313764372/3a54ab91f941f90243249ef193735131.png?size=256",
+    src: "https://i.imgur.com/ikTmAlP.png",
   },
   {
     alt: "Super comic being",
@@ -58,31 +59,48 @@ let images = [
     src: "https://cdn.discordapp.com/avatars/1014875193396703302/bda9787977522c39f32e14438d9575c7.png?size=256",
   },
 ];
-
 ---
 
-<section class="sm:w-5/6 mt-48 px-4 mx-auto my-12">
+<section id="bento" class="sm:w-5/6 mt-48 px-4 mx-auto my-12">
   <div
-    class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 "
+    class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
   >
-    <div class="col-span-1  sm:col-span-2 md:col-span-3 w-full">
-      <div class="grid sm:grid-rows-3 gap-4 w-full">
-        <div class="rounded-lg md:row-span-2 w-full  sm:p-4 p-0">
+    <div class="col-span-1 sm:col-span-2 md:col-span-3 w-full">
+      <div class="grid sm:grid-rows-3 gap-6 w-full">
+        <div class="rounded-2xl md:row-span-2 w-full sm:p-4 p-0">
           <div>
             <span class="lg:text-5xl xl:text-6xl md:text-5xl text-4xl"
               >Be a part of our Origin Story</span
             >
-            <div class="bg-[#D9D9D933]/20 rounded-full sm:h-6 h-4 mt-4">
+            <div
+              class="bg-[#D9D9D933]/20 rounded-full sm:h-4 h-4 mt-4 shadow-white drop-shadow-lg"
+            >
               <div
-                class="bg-gradient-to-r from-[#FFA7E1] to-[#22189E] sm:h-6 h-4 w-[90%] rounded-full"
+                class="bg-gradient-to-r from-[#FFA7E1] via-[#22189E] to-[#FFA7E1] sm:h-4 h-4 w-[90%] rounded-full animate-gradient bg-[length:200%_100%]"
               >
               </div>
             </div>
+            <style>
+              .animate-gradient {
+                animation: gradient 3s linear infinite;
+                background-size: 200% 100%;
+              }
+              @keyframes gradient {
+                0% {
+                  background-position: 100% 0;
+                }
+                100% {
+                  background-position: -100% 0;
+                }
+              }
+            </style>
             <div class="flex text-xs justify-between mt-1 items-center">
               <span class="text-white/60"> 200 founding members only </span>
               <span class="text-[#FFA7E1]"> 20 Members remaining </span>
             </div>
-            <div class="mt-8 flex sm:flex-row flex-col sm:w-full  sm:justify-between sm:items-center">
+            <div
+              class="mt-8 flex sm:flex-row flex-col sm:w-full sm:justify-between sm:items-center"
+            >
               <User images={images} />
               <a
                 href="https://www.dsc.gg/dialogh"
@@ -104,8 +122,12 @@ let images = [
             </div>
           </div>
         </div>
-        <div class="md:grid grid-cols-5  sm:mt-0 mt-24 w-full sm:gap-4 flex flex-col gap-2">
-          <div class="md:col-span-2 w-full md:h-auto h-32 rounded-lg bg-[#22189E]">
+        <div
+          class="md:grid grid-cols-5 sm:mt-0 mt-24 w-full sm:gap-6 flex flex-col gap-2"
+        >
+          <div
+            class="md:col-span-2 w-full md:h-auto h-32 rounded-2xl bg-[#0c0941]"
+          >
             <div
               class="text-2xl w-full text-transparent bg-clip-text bg-gradient-to-r from-white to-[#999999] flex flex-col items-center justify-center h-full"
             >
@@ -117,28 +139,30 @@ let images = [
                     class="w-5 inline-block"
                   />
                 </p>
-                <p>the tech the way we do</p>
+                <p>tech the way we do</p>
               </div>
             </div>
           </div>
           <div
-            class="md:col-span-2 col-span-2 md:h-auto h-32 rounded-lg bg-white/10"
+            class="md:col-span-2 col-span-2 md:h-auto h-32 rounded-2xl bg-white/10"
           >
-            <div class="flex flex-col items-center justify-center w-full h-full">
+            <div
+              class="flex flex-col items-center justify-center w-full h-full"
+            >
               <div>
                 <p>{new Date().getFullYear()} Dialogh</p>
                 <a
-                href="mailto:dialogh.community@gmail.com"
-                target="_blank"
+                  href="mailto:dialogh.community@gmail.com"
+                  target="_blank"
                   class="text-blue-400 border-b border-transparent w-fit hover:border-blue-400"
                 >
                   dialogh.community@gmail.com
-              </a>
+                </a>
                 <p>Built by Dialogh core team</p>
               </div>
             </div>
           </div>
-          <div class="col-span-1 bg-white/10 rounded-lg">
+          <div class="col-span-1 bg-white/10 rounded-2xl">
             <div
               class="flex flex-col w-full items-center justify-center h-full"
             >
@@ -165,43 +189,14 @@ let images = [
       </div>
     </div>
     <div
-      class="bg-white/10 relative w-full hidden lg:block overflow-hidden rounded-lg"
+      class="bg-white/10 relative w-full hidden h-full lg:block md:flex flex-col items-center justify-center overflow-hidden rounded-2xl"
     >
-      <canvas
-        id="animatedBackground"
-        class="absolute pointer-events-none inset-0 w-full h-full"></canvas>
-      <script>
-        const canvas = document.getElementById("animatedBackground") as HTMLCanvasElement;
-        const context = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const colors = [
-          "rgba(255, 99, 132, 0.5)",
-          "rgba(54, 162, 235, 0.5)",
-          "rgba(255, 206, 86, 0.5)",
-          "rgba(75, 192, 192, 0.5)",
-          "rgba(153, 102, 255, 0.5)",
-        ];
-
-        function draw() {
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          const time = new Date().getTime() * 0.002;
-          for (let i = 0; i < 5; i++) {
-            const angle = time + (i * Math.PI) / 2.5;
-            const x = Math.sin(angle) * 192 + canvas.width / 2;
-            const y = Math.cos(angle * -1) * 192 + canvas.height / 2;
-            context.beginPath();
-            context.arc(x, y, 400, 0, Math.PI * 5000);
-            context.fillStyle = colors[i % colors.length];
-            context.filter = "blur(150px)";
-            context.fill();
-          }
-          requestAnimationFrame(draw);
-        }
-
-        draw();
-      </script>
+      <div class="absolute w-full h-full bg-violet-500"></div>
+      <span
+        class="flex w-[70%] relative z-10 mx-auto h-full items-center justify-center text-4xl italic px-4"
+      >
+        “Growth happens outside your comfort zone, but inside a supportive"
+      </span>
     </div>
   </div>
 </section>
