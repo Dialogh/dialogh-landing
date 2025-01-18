@@ -5,9 +5,12 @@ import Instagram from "./icons/instagram.astro";
 ---
 
 <footer class="text-white w-full">
-  <div class="flex items-center justify-between">
-    <span class="xl:text-6xl lg:text-4xl md:text-2xl text-xl ">Connect. Collaborate. Create.</span>
-    <div class="flex gap-4 items-center">
+  <div class="flex sm:items-center justify-between items-start ">
+    <span class="xl:text-6xl lg:text-4xl md:text-2xl text-xl flex flex-wrap sm:flex-row flex-col">
+      <span>Connect.</span>
+        <span>Collaborate.</span><span>Create.</span>
+    </span>
+    <div class="flex gap-4 items-center sm:pt-0 pt-2">
       <a href="https://dsc.gg/dialogh" target="_blank">
         <Discord class="size-8 hover:cursor-pointer" />
       </a>

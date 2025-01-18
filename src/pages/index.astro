@@ -18,11 +18,8 @@ import Bento from "../components/Bento.astro";
   <section class="w-full">
     <div class="h-dvh relative overflow-hidden">
       <div class="lg:block hidden">
-        <CanvasCusror client:only />
+        <CanvasCusror client:only="react" />
       </div>
-      <!-- <div class="absolute size-full -z-10 hidden lg:block">
-      <Particles client:only />
-    </div> -->
       <div
         class="absolute -z-20 bottom-0 w-full h-full sm:right-auto background-gradient -right-96"
       >
@@ -31,12 +28,12 @@ import Bento from "../components/Bento.astro";
         <Navbar />
         <Hero />
       </div>
-      <div class="sticky bottom-8 w-5/6 sm:w-5/6 px-4 mx-auto">
+      <div class="sticky bottom-8 sm:w-5/6 px-4 mx-auto">
         <Footer />
       </div>
     </div>
     <div>
-      <WordMarquee client:only />
+      <WordMarquee client:only="react" />
     </div>
     <About />
     <ExclusiveFounding />
