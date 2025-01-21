@@ -12,7 +12,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content="Dialogh - Community for tech enthusiasts" />
@@ -21,11 +21,14 @@ const { title } = Astro.props;
       content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
     />
     <meta name="author" content="Dialogh" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dialogh.in" />
-    <meta property="og:title" content="Dialogh - Community for tech enthusiasts" />
+    <meta
+      property="og:title"
+      content="Dialogh - Community for tech enthusiasts"
+    />
     <meta
       property="og:description"
       content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
@@ -33,26 +36,32 @@ const { title } = Astro.props;
     <meta property="og:image" content="https://dialogh.in/og.png" />
     <meta property="og:site_name" content="Dialogh" />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://dialogh.in" />
-    <meta name="twitter:title" content="Dialogh - Community for tech enthusiasts" />
+    <meta
+      name="twitter:title"
+      content="Dialogh - Community for tech enthusiasts"
+    />
     <meta
       name="twitter:description"
       content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
     />
     <meta name="twitter:image" content="https://dialogh.in/og.png" />
     <meta name="twitter:creator" content="@dialogh_in" />
-    
+
     <!-- Additional Meta Tags -->
-    <meta name="theme-color" content="#8842ea" />
-    <meta name="keywords" content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation" />
+    <meta name="theme-color" content="#00000" />
+    <meta
+      name="keywords"
+      content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation"
+    />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
     <meta name="revisit-after" content="7 days" />
     <meta name="language" content="English" />
-    
+
     <!-- Links -->
     <link rel="canonical" href="https://dialogh.in" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -64,7 +73,7 @@ const { title } = Astro.props;
       rel="stylesheet"
       href="https://unpkg.com/lenis@1.1.19/dist/lenis.css"
     />
-    
+
     <!-- Scripts -->
     <script
       defer
@@ -116,6 +125,16 @@ const { title } = Astro.props;
       monospace;
   }
   body {
-    font-family: "PP Neue Montreal", sans-serif;
+    font-family:
+      "PP Neue Montreal",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji";
   }
 </style>
