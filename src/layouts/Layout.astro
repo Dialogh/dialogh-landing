@@ -66,30 +66,39 @@ const { title } = Astro.props;
     <link rel="canonical" href="https://dialogh.in" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link
+      rel="prefetch"
       href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
       rel="stylesheet"
+      as="style"
     />
     <link
       rel="stylesheet"
       href="https://unpkg.com/lenis@1.1.19/dist/lenis.css"
     />
+    <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script>
 
     <!-- Scripts -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dialogh",
+        "url": "https://dialogh.in",
+        "sameAs": [
+          "https://instagram.com/dialogh.in",
+          "https://linkedin.com/company/dialogh-community",
+          "https://dsc.gg/dialogh"
+        ]
+      }
+    </script>
+
     <script
       defer
+      type="text/partytown"
       src="https://cloud.umami.is/script.js"
       data-website-id="0c560206-7fba-45d9-9f57-5d1870738ef1"></script>
-    <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script>
-    <script is:raw>
-      document.addEventListener("DOMContentLoaded", () => {
-        if (typeof Lenis !== "undefined") {
-          const lenis = new Lenis({
-            autoRaf: true,
-            anchors: true,
-          });
-        }
-      });
-    </script>
+
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
@@ -138,3 +147,11 @@ const { title } = Astro.props;
       "Segoe UI Emoji";
   }
 </style>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    new Lenis({
+      autoRaf: true,
+      anchors: true,
+    });
+  });
+</script>
