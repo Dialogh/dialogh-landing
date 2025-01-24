@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Tiltarrow from "./Tiltarrow.astro";
-const { images, size } = Astro.props;
+
+const { images, size, showArrow = true, text = "0" } = Astro.props;
 
 const imageSizeClass =
   size === "large"
@@ -25,10 +26,21 @@ const tiltArrowSizeClass =
     ))
   }
   <a
+    aria-label="Join our Discord community"
     href="https://dsc.gg/dialogh"
     target="_blank"
+    rel="noopener noreferrer"
     class={`${tiltArrowSizeClass} flex-shrink-0 relative  -ml-3 hover:rotate-45 transition-all bg-[#FFA7E1] rounded-full flex items-center justify-center hover:bg-white `}
   >
-    <Tiltarrow />
+    <span class="sr-only">Join Discord community</span>
+    {
+      showArrow ? (
+        <Tiltarrow />
+      ) : (
+        <span class="text-white hover:text-black font-semibold mt-1">
+          {text}
+        </span>
+      )
+    }
   </a>
 </div>
