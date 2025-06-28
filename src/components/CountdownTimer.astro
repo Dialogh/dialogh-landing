@@ -1,0 +1,74 @@
+---
+// No props needed for now, but you can add targetDate as a prop later
+---
+
+<div class="text-primary relative z-10">
+  <div
+    class="text-center text-3xl sm:text-4xl flex items-center justify-center gap-4"
+  >
+    <div class="flex items-end">
+      <div id="days" class="countdown-number tabular-nums">00</div>
+      <div class="">d</div>
+    </div>
+    <div class="flex items-end">
+      <div id="hours" class="countdown-number tabular-nums">00</div>
+      <div class="">h</div>
+    </div>
+    <div class="flex items-end">
+      <div id="minutes" class="countdown-number">00</div>
+      <div class="">m</div>
+    </div>
+    <div class="flex items-end">
+      <div id="seconds" class="countdown-number tabular-nums">00</div>
+      <div class="">s</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateCountdown() {
+    const targetDate = new Date("2025-07-16T00:00:00").getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      document.getElementById("days")!.textContent = "00";
+      document.getElementById("hours")!.textContent = "00";
+      document.getElementById("minutes")!.textContent = "00";
+      document.getElementById("seconds")!.textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days")!.textContent = days
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("hours")!.textContent = hours
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("minutes")!.textContent = minutes
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("seconds")!.textContent = seconds
+      .toString()
+      .padStart(2, "0");
+  }
+
+  // Update countdown immediately and then every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<style>
+  .countdown-number {
+    display: inline-block;
+    min-width: 2ch;
+    text-align: center;
+  }
+</style>
