@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import BgVector1 from "../assets/images/Vector.webp";
+import CountdownTimer from "./CountdownTimer.astro";
+import EmailSignup from "./EmailSignup.astro";
+import ScrollDownButton from "./ScrollDownButton.astro";
+import Email from "./Email.astro";
+---
+
+<div class="bg-secondary rounded-xl w-full h-full relative overflow-hidden">
+  <Email />
+
+  <div class="absolute flex items-center justify-center inset-0 z-0 px-4">
+    <CountdownTimer />
+    <Image src={BgVector1} alt="Background Vector" class="mb-4 absolute" />
+  </div>
+  <div class="absolute bottom-2 sm:bottom-4 mx-auto w-full px-4">
+    <EmailSignup />
+    <ScrollDownButton />
+  </div>
+</div>
