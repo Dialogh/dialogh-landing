@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+import "lenis/dist/lenis.css";
+import { AstroFont } from "astro-font";
+---
+
+<html lang="en">
+  <head>
+    <AstroFont
+      config={[
+        {
+          name: "PP Neue Montreal",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff",
+            },
+            {
+              style: "italic",
+              weight: "400",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-italic.woff",
+            },
+            {
+              style: "normal",
+              weight: "100",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-thin.woff",
+            },
+            {
+              style: "normal",
+              weight: "500",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff",
+            },
+            {
+              style: "italic",
+              weight: "600",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-semibolditalic.woff",
+            },
+            {
+              style: "normal",
+              weight: "700",
+              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Dialogh - Community for Tech</title>
+  </head>
+  <body>
+    <slot />
+  </body><script>
+    import Lenis from "lenis";
+    const lenis = new Lenis({
+      autoRaf: true,
+      smoothWheel: true,
+      syncTouch: true,
+    });
+
+    // function raf(time: number) {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // }
+
+    // requestAnimationFrame(raf);
+  </script>
+</html>
