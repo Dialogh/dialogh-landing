@@ -1,0 +1,72 @@
+---
+// ScrollDownButton.astro
+import { Image } from "astro:assets";
+import ButtonImg from "../assets/images/button.webp";
+---
+
+<div class="w-fit mx-auto p-1 sm:p-2">
+  <button
+    class="relative flex items-center justify-center rounded-full hover:scale-105 transition-transform duration-200"
+    id="scrollDownBtn"
+    aria-label="Scroll to next section"
+  >
+    <Image src={ButtonImg} class="size-24 sm:size-28 md:size-32" alt="" />
+    <svg
+      class="absolute z-10"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="sm:w-5 sm:h-5 md:w-6 md:h-6"
+    >
+      <path
+        d="M7 10L12 15L17 10"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const scrollBtn = document.getElementById("scrollDownBtn");
+
+      if (scrollBtn) {
+        scrollBtn.addEventListener("click", () => {
+          // Smooth scroll to next section or bottom of viewport
+          const nextSection =
+            document.querySelector("section:nth-child(2)") ||
+            document.querySelector("main > *:nth-child(2)") ||
+            document.body;
+
+          const targetPosition =
+            nextSection === document.body
+              ? window.innerHeight
+              : (nextSection as HTMLElement).offsetTop;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        });
+
+        // Hide button when near bottom of page
+        window.addEventListener("scroll", () => {
+          const scrollPosition = window.scrollY + window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const threshold = documentHeight - 200;
+
+          if (scrollPosition >= threshold) {
+            scrollBtn.style.opacity = "0";
+            scrollBtn.style.pointerEvents = "none";
+          } else {
+            scrollBtn.style.opacity = "1";
+            scrollBtn.style.pointerEvents = "auto";
+          }
+        });
+      }
+    });
+  </script>
+</div>
