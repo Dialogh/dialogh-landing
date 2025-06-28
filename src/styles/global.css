@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "PP Neue Montreal", sans-serif;
+  --color-primary: #000000;
+  --color-secondary: #fffcf6;
+  --color-accent-1: #ffa7e1;
+  --color-accent-2: #a7c3ff;
+}
