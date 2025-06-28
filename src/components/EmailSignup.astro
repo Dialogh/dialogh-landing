@@ -1,0 +1,56 @@
+---
+import ScrollDownButton from "./ScrollDownButton.astro";
+import LineImg from "../assets/images/line.webp";
+import { Image } from "astro:assets";
+---
+
+<div class="max-w-xl mx-auto text-center relative z-10 px-4">
+  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4">
+    dialogh is <span class="evolving-text relative"
+      >evolving <Image
+        src={LineImg}
+        class="absolute -bottom-1 left-2 sm:left-4 md:left-6 w-auto h-auto"
+        alt=""
+      /></span
+    >
+  </h1>
+
+  <p
+    class="text-sm sm:text-base md:text-lg lg:text-xl max-w-xs sm:max-w-sm md:max-w-md text-primary/70 mb-6 sm:mb-8 mx-auto"
+  >
+    A space rebuilt with intention.. for the people who made it what it was.
+  </p>
+
+  <form
+    class="flex flex-row gap-2 sm:gap-3 max-w-xs sm:max-w-md md:max-w-lg mx-auto bg-primary/10 rounded-full p-1.5 sm:p-2"
+  >
+    <input
+      type="text"
+      placeholder="Enter Your Email/Discord Id"
+      class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-full focus:outline-none"
+      required
+    />
+    <button
+      type="submit"
+      class="px-4 hidden sm:block sm:px-6 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full"
+    >
+      Get Notified
+    </button>
+  </form>
+  <button
+    type="submit"
+    class="px-4 sm:hidden block sm:px-6 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full mx-auto mt-2"
+  >
+    Get Notified
+  </button>
+</div>
+
+<style>
+  input::placeholder {
+    opacity: 0.7;
+  }
+
+  button {
+    white-space: nowrap;
+  }
+</style>
