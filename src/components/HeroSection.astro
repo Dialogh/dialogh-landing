@@ -7,14 +7,14 @@ import ScrollDownButton from "./ScrollDownButton.astro";
 import Email from "./Email.astro";
 ---
 
-<div class="bg-secondary rounded-xl w-full h-full relative overflow-hidden">
+<div class="bg-secondary rounded-xl w-full h-full lg:h-170 relative overflow-hidden">
   <Email />
 
-  <div class="absolute flex items-center justify-center inset-0 z-0 px-4">
+  <div class="absolute bottom-25 flex items-center justify-center inset-0 z-0 px-4 lg:bottom-35">
     <CountdownTimer />
-    <Image src={BgVector1} alt="Background Vector" class="mb-4 absolute" />
+    <Image src={BgVector1} alt="Background Vector" class="mb-4 absolute lg:w-xl" />
   </div>
-  <div class="absolute bottom-2 sm:bottom-4 mx-auto w-full px-4">
+  <div class="absolute bottom-2 lg:bottom-15 sm:bottom-4 mx-auto w-full px-4">
     <EmailSignup />
     <ScrollDownButton />
   </div>

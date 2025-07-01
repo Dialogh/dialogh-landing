@@ -4,7 +4,7 @@ import LineImg from "../assets/images/line.webp";
 import { Image } from "astro:assets";
 ---
 
-<div class="max-w-xl mx-auto text-center relative z-10 px-4">
+<div class="max-w-md mx-auto text-center relative z-10 px-4 mb-4">
   <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4">
     dialogh is <span class="evolving-text relative"
       >evolving <Image
@@ -22,27 +22,24 @@ import { Image } from "astro:assets";
   </p>
 
   <form
-    class="flex flex-row gap-2 sm:gap-3 max-w-xs sm:max-w-md md:max-w-lg mx-auto bg-primary/10 rounded-full p-1.5 sm:p-2"
+    class="flex flex-row gap-2 sm:gap-3 max-w-xs sm:max-w-xl md:max-w-lg mx-auto bg-primary/10 rounded-full p-1.5"
+    name="register"
+    id="registerForm"
   >
     <input
       type="text"
       placeholder="Enter Your Email/Discord Id"
-      class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base rounded-full focus:outline-none"
+      class="flex-1 lg:px-3 sm:px-0 py-2 sm:py-2.5 text-sm sm:text-base rounded-full focus:outline-none"
+      name="data"
       required
     />
     <button
       type="submit"
-      class="px-4 hidden sm:block sm:px-6 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full"
+      class="lg:px-4 block sm:px-0 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full"
     >
       Get Notified
     </button>
   </form>
-  <button
-    type="submit"
-    class="px-4 sm:hidden block sm:px-6 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full mx-auto mt-2"
-  >
-    Get Notified
-  </button>
 </div>
 
 <style>
@@ -54,3 +51,28 @@ import { Image } from "astro:assets";
     white-space: nowrap;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      const userData = form.elements["data"].value;
+      const req = "Submission: " + encodeURIComponent(userData);
+      const url = "https://frost.alwaysdata.net/contact.php?" + req;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          alert("Successfully submitted!");
+        })
+        .catch(error => {
+          alert("Failed to submit: " + error.message);
+        });
+    });
+  });
+</script>
