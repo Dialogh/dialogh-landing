@@ -9,9 +9,12 @@ import vercel from "@astrojs/vercel";
 
 import netlify from "@astrojs/netlify";
 
+import partytown from "@astrojs/partytown";
+
+import playformCompress from "@playform/compress";
+
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
   server: {
     allowedHosts: true,
   },
@@ -23,7 +26,15 @@ export default defineConfig({
       }),
     },
   },
-  integrations: [react()],
+  integrations: [
+    react(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    playformCompress(),
+  ],
 
   vite: {
     plugins: [tailwindcss()],
