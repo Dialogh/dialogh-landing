@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 ---
 
 <div class="max-w-md mx-auto text-center relative z-10 px-4 mb-4">
-  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4">
+  <h1 class="text-2xl sm:text-3xl md:text-4xl mb-4">
     dialogh is <span class="evolving-text relative"
       >evolving <Image
         src={LineImg}
@@ -29,13 +29,13 @@ import { Image } from "astro:assets";
     <input
       type="text"
       placeholder="Enter Your Email/Discord Id"
-      class="flex-1 lg:px-3 sm:px-0 py-2 sm:py-2.5 text-sm sm:text-base rounded-full focus:outline-none"
+      class="flex-1 lg:px-3 sm:px-0 py-1 sm:py-1 text-sm sm:text-base rounded-full focus:outline-none"
       name="data"
       required
     />
     <button
       type="submit"
-      class="lg:px-4 block sm:px-0 py-2 sm:py-3 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full"
+      class="block px-2 text-sm sm:text-base transition-colors bg-primary text-secondary rounded-full"
     >
       Get Notified
     </button>
@@ -56,21 +56,21 @@ import { Image } from "astro:assets";
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("registerForm");
 
-    form.addEventListener("submit", function (e) {
+    form?.addEventListener("submit", function (e) {
       e.preventDefault(); // Prevent the default form submission
 
-      const userData = form.elements["data"].value;
+      const userData = form?.elements["data"].value;
       const req = "Submission: " + encodeURIComponent(userData);
       const url = "https://frost.alwaysdata.net/contact.php?" + req;
 
       fetch(url)
-        .then(response => {
+        .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
           alert("Successfully submitted!");
         })
-        .catch(error => {
+        .catch((error) => {
           alert("Failed to submit: " + error.message);
         });
     });
