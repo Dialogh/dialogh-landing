@@ -15,8 +15,9 @@ import Email from "./Email.astro";
   >
     <CountdownTimer />
     <Image
+      fetchpriority={"high"}
       src={BgVector1}
-      loading="lazy"
+      loading="eager"
       decoding={"async"}
       alt="Background Vector"
       class="mb-4 absolute md:w-lg"
