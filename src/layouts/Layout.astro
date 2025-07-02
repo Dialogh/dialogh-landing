@@ -2,6 +2,13 @@
 import "../styles/global.css";
 import "lenis/dist/lenis.css";
 import { AstroFont } from "astro-font";
+import Toast from "../components/Toast.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
 ---
 
 <html lang="en">
@@ -50,19 +57,114 @@ import { AstroFont } from "astro-font";
       ]}
     />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content="Dialogh - Community for tech enthusiasts" />
+    <meta
+      name="description"
+      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+    />
+    <meta name="author" content="Dialogh" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dialogh.in" />
+    <meta
+      property="og:title"
+      content="Dialogh - Community for tech enthusiasts"
+    />
+    <meta
+      property="og:description"
+      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+    />
+    <meta property="og:image" content="https://dialogh.in/og.png" />
+    <meta property="og:site_name" content="Dialogh" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://dialogh.in" />
+    <meta
+      name="twitter:title"
+      content="Dialogh - Community for tech enthusiasts"
+    />
+    <meta
+      name="twitter:description"
+      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+    />
+    <meta name="twitter:image" content="https://dialogh.in/og.png" />
+    <meta name="twitter:creator" content="@dialogh_in" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#00000" />
+    <meta
+      name="keywords"
+      content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="English" />
+
+    <!-- Links -->
+    <link rel="canonical" href="https://dialogh.in" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link
+      rel="stylesheet preload prefetch"
+      href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
+      as="style"
+    />
+    <link
+      rel="stylesheet preload prefetch"
+      href="https://unpkg.com/lenis@1.1.19/dist/lenis.css"
+      as="style"
+    />
+    <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script>
+
+    <!-- Scripts -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dialogh",
+        "url": "https://dialogh.in",
+        "sameAs": [
+          "https://instagram.com/dialogh.in",
+          "https://linkedin.com/company/dialogh-community",
+          "https://dsc.gg/dialogh"
+        ]
+      }
+    </script>
+
+    <script
+      defer
+      type="text/partytown"
+      src="https://cloud.umami.is/script.js"
+      data-website-id="0c560206-7fba-45d9-9f57-5d1870738ef1"></script>
+
     <meta name="generator" content={Astro.generator} />
-    <title>Dialogh - Community for Tech</title>
   </head>
   <body>
     <slot />
+    <Toast />
   </body><script>
     import Lenis from "lenis";
-    const lenis = new Lenis({
-      autoRaf: true,
-      smoothWheel: true,
-      syncTouch: true,
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window?.showToast) {
+        window.showToast({
+          type: "info",
+          title: "Welcome to Dialogh!",
+          message:
+            "We're excited to have you here. Explore our community and stay tuned for updates!",
+          duration: 100000,
+        });
+      }
+      const lenis = new Lenis({
+        autoRaf: true,
+        smoothWheel: true,
+        syncTouch: true,
+      });
     });
 
     // function raf(time: number) {
