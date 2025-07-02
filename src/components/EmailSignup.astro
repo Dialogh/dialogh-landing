@@ -54,25 +54,50 @@ import { Image } from "astro:assets";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registerForm");
+    const form = document.getElementById("registerForm") as HTMLFormElement;
 
-    form?.addEventListener("submit", function (e) {
+    form?.addEventListener("submit", async function (e) {
       e.preventDefault(); // Prevent the default form submission
 
-      const userData = form?.elements["data"].value;
-      const req = "Submission: " + encodeURIComponent(userData);
-      const url = "https://frost.alwaysdata.net/contact.php?" + req;
+      const submitButton = form.querySelector(
+        'button[type="submit"]'
+      ) as HTMLButtonElement;
+      const originalText = submitButton?.textContent || "Get Notified";
 
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          alert("Successfully submitted!");
-        })
-        .catch((error) => {
-          alert("Failed to submit: " + error.message);
+      // Show loading state
+      if (submitButton) {
+        submitButton.textContent = "Submitting...";
+        submitButton.disabled = true;
+      }
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch("/api/submit", {
+          method: "POST",
+          body: formData,
         });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert(result.message || "Successfully submitted!");
+          form.reset(); // Clear the form
+        } else {
+          alert(result.error || "Failed to submit. Please try again.");
+        }
+      } catch (error) {
+        console.error("Submission error:", error);
+        const errorMessage =
+          error instanceof Error ? error.message : "Unknown error occurred";
+        alert("Failed to submit: " + errorMessage);
+      } finally {
+        // Restore button state
+        if (submitButton) {
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        }
+      }
     });
   });
 </script>
