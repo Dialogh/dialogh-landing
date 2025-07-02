@@ -97,7 +97,7 @@ const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
     <meta name="twitter:creator" content="@dialogh_in" />
 
     <!-- Mobile specific meta tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content={title} />
     <meta name="format-detection" content="telephone=no" />
@@ -149,15 +149,6 @@ const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
   </body><script>
     import Lenis from "lenis";
     document.addEventListener("DOMContentLoaded", () => {
-      if (window?.showToast) {
-        window.showToast({
-          type: "info",
-          title: "Welcome to Dialogh!",
-          message:
-            "We're excited to have you here. Explore our community and stay tuned for updates!",
-          duration: 100000,
-        });
-      }
       const lenis = new Lenis({
         autoRaf: true,
         smoothWheel: true,
