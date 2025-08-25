@@ -1,0 +1,94 @@
+---
+import Carousel from "./Carousel.astro";
+import Card from "./new/Card.astro";
+import sivtej from "../assets/images/sivtej.webp";
+import sivesh from "../assets/images/sivesh.webp";
+import jineet from "../assets/images/jineet.png";
+import gursimran from "../assets/images/gursimran.png";
+import flame from "../assets/images/flame.webp";
+let cardElements = [
+  {
+    author: {
+      image: sivtej,
+      name: "Sivtej Gore",
+    },
+    description:
+      "Being part of Dialogh has been an incredible journey for me. Through the engaging and diverse events, I've had the opportunity to meet so many wonderful people who have enriched my experience in countless ways.  What I valued most was the continuous learning environment - there was alw....",
+  },
+  {
+    author: {
+      image: sivesh,
+      name: "Sivesh Kumar",
+    },
+    description:
+      "Dialogh is an incredible community where I’ve met great friends, collaborated with talented designers, and grown through learning, teaching, and creating together.",
+  },
+  {
+    author: {
+      image: jineet,
+      name: "Jineet Vaishnav",
+    },
+    description: `Being part of the Dialogh community has been a wonderful experience. From the very beginning, the space felt welcoming, and everyone had the opportunity to be heard—whether during events or in the casual voice chat channels. These interactions exposed me to a wide range of opinions and gave me fresh insights into the industry.
+
+Since the community was still in its early stages, I also got to witness and understand how community building actually works. The events were always meaningful and engaging. Aagam, the founder, truly stood out with his strong vision and talent. He consistently encouraged us to think from new perspectives and worked with the mindset of helping everyone grow in their skills.
+
+One of my favorite moments was the Design event he hosted, where he explained how design works in practice and how to create designs that are both functional and visually appealing. It was especially impactful for new designers, as it gave them practical direction to improve their craft.`,
+  },
+  {
+    author: {
+      image: gursimran, // You can replace this with another image if available
+      name: "Gursimran Singh",
+    },
+    description:
+      "Joining Dialogh as a member has truly expanded my horizons. The community is filled with passionate, creative people who are always willing to help and share their knowledge. Every event feels inspiring, and I've grown both personally and professionally thanks to the supportive environment here. I was also an intern for AI Events Lead, which gave me hands-on experience in organizing and leading impactful sessions.",
+  },
+  {
+    author: {
+      image: flame, // Replace with the correct image if available
+      name: "Flame",
+    },
+    description:
+      "I absolutely love attending Dialogh's events and workshops! Each session is packed with valuable insights and practical knowledge. The community's passion for learning is contagious, and I've discovered so much by participating. Dialogh has truly fueled my curiosity and helped me grow as a lifelong learner.",
+  },
+];
+---
+
+<section id="testimonials" class="text-[#FFFCF6]">
+  <div
+    class="bg-white/10 py-2 px-4 rounded-full text-white/50 w-fit mx-auto mt-52 text-xs"
+  >
+    Testimonials
+  </div>
+
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="mt-24 flex flex-col gap-9">
+      <div class="w-full flex justify-end">
+        <div
+          class="bg-white/20 px-4 py-2 w-fit rounded-2xl max-w-xs sm:max-w-none"
+        >
+          <span class="text-sm sm:text-base"
+            >What do members think about Dialogh, and <br
+              class="hidden sm:block"
+            /> what's their experience like?</span
+          >
+        </div>
+      </div>
+      <div class="max-w-xl">
+        <p class="text-base sm:text-lg">Here's how some of them describe it:</p>
+      </div>
+    </div>
+    <div class="mt-8">
+      <Carousel id="testimonials-cards" showArrows={true}>
+        {
+          cardElements.map((card) => (
+            <Card
+              className="min-h-[360px]"
+              description={card.description}
+              author={card.author}
+            />
+          ))
+        }
+      </Carousel>
+    </div>
+  </div>
+</section>
