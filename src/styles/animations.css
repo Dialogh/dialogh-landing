@@ -1,0 +1,428 @@
+/* Animation Utilities and Optimizations */
+
+/* Performance optimizations */
+.animate-element {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.animate-element.animating {
+  will-change: auto;
+}
+
+/* Initial states for in-view animations */
+.fade-in-up-init {
+  opacity: 0;
+  transform: translate3d(0, 60px, 0);
+}
+
+.fade-in-down-init {
+  opacity: 0;
+  transform: translate3d(0, -60px, 0);
+}
+
+.fade-in-left-init {
+  opacity: 0;
+  transform: translate3d(-60px, 0, 0);
+}
+
+.fade-in-right-init {
+  opacity: 0;
+  transform: translate3d(60px, 0, 0);
+}
+
+.scale-in-init {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(0.8);
+}
+
+.slide-up-init {
+  transform: translate3d(0, 100%, 0);
+}
+
+.rotate-in-init {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) rotate(-45deg) scale(0.8);
+}
+
+/* Text animation utilities */
+.text-animate {
+  overflow: hidden;
+}
+
+.text-animate span {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.text-animate.chars span {
+  transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+
+.text-animate.words span {
+  transform: translate3d(0, 60px, 0);
+  opacity: 0;
+}
+
+.text-animate.lines span {
+  transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 1000;
+  will-change: transform;
+}
+
+/* Parallax elements */
+.parallax-element {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Utility animations for hover states */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translate3d(0, -8px, 0);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Stagger container */
+.stagger-container > * {
+  opacity: 0;
+  transform: translate3d(0, 60px, 0);
+}
+
+/* Image reveal animations */
+.image-reveal {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-reveal img {
+  transform: scale(1.1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-reveal.revealed img {
+  transform: scale(1);
+}
+
+.image-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left center;
+  z-index: 1;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-reveal.revealed::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+/* Button animations */
+.animate-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.animate-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Card animations */
+.animate-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Magnetic effect */
+.magnetic-element {
+  transition: transform 0.15s ease-out;
+  cursor: pointer;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -20px, 0);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Reveal animations */
+.reveal-mask {
+  overflow: hidden;
+}
+
+.reveal-mask .reveal-content {
+  transform: translate3d(0, 100%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-mask.revealed .reveal-content {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .parallax-element {
+    transform: none !important;
+  }
+
+  .float-animation,
+  .pulse-animation,
+  .gradient-text {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .loading-skeleton {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      currentColor 10px,
+      currentColor 11px
+    );
+  }
+}
+
+/* Focus states for accessibility */
+.animate-element:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Performance hints */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Container for staggered animations */
+.stagger-wrapper {
+  overflow: hidden;
+}
+
+/* Morphing shapes */
+.morph-shape {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text selection animations */
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: inherit;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Page transition helpers */
+.page-transition-enter {
+  opacity: 0;
+  transform: translate3d(0, 60px, 0);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translate3d(0, -60px, 0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Typography animations */
+.typewriter::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Interactive elements */
+.interactive-element {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.interactive-element:active {
+  transform: scale(0.98);
+}
+
+/* Container queries support (if available) */
+@supports (container-type: inline-size) {
+  .responsive-animation {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 500px) {
+    .responsive-animation .animate-element {
+      animation-duration: 0.8s;
+    }
+  }
+}
