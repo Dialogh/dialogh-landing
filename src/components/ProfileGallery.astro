@@ -1,0 +1,202 @@
+---
+import aagamImg from "../assets/images/aagam.jpg";
+import siveshImg from "../assets/images/sivesh.webp";
+import sivtejImg from "../assets/images/sivtej.webp";
+import yashImg from "../assets/images/yash.png";
+import rohitImg from "../assets/images/rohit.jpg";
+import gursimran from "../assets/images/gursimran.png";
+import jineet from "../assets/images/jineet.png";
+import deveshImg from "../assets/images/devesh.png";
+import flame from "../assets/images/flame.webp";
+import matrix from "../assets/images/matrix.webp";
+import povesh from "../assets/images/povesh.webp";
+import atharv from "../assets/images/atharv.webp";
+import { Image } from "astro:assets";
+
+// Random size variations
+const sizes = [
+  "size-10 sm:size-14",
+  "size-12 sm:size-16",
+  "size-14 sm:size-18",
+  "size-16 sm:size-20",
+  "size-18 sm:size-22",
+  "size-20 sm:size-24",
+  "size-22 sm:size-26",
+];
+
+// Profile data with subtle Y-axis variations like the original
+const profiles = [
+  {
+    name: "Aagam",
+    image: aagamImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-1",
+  },
+  {
+    name: "Sivesh",
+    image: siveshImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-2",
+  },
+  {
+    name: "Sivtej",
+    image: sivtejImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-3",
+  },
+  {
+    name: "Rohit",
+    image: rohitImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-4",
+  },
+  {
+    name: "Yash",
+    image: yashImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-5",
+  },
+  {
+    name: "Gursimran",
+    image: gursimran,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-6",
+  },
+  {
+    name: "Jineet",
+    image: jineet,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-7",
+  },
+  {
+    name: "Devesh",
+    image: deveshImg,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-7",
+  },
+  {
+    name: "Flame",
+    image: flame,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-8",
+  },
+  {
+    name: "Matrix",
+    image: matrix,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-10",
+  },
+  {
+    name: "Povesh",
+    image: povesh,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-11",
+  },
+  {
+    name: "Atharv",
+    image: atharv,
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    xOffset: Math.floor(Math.random() * 30) - 15,
+    yOffset: Math.floor(Math.random() * 40) - 20,
+    id: "profile-12",
+  },
+];
+---
+
+<section class="bg-black py-16 hidden xl:block">
+  <div class="max-w-7xl mx-auto px-4">
+    <div
+      class="flex items-center justify-center space-x-4 sm:space-x-6 md:space-x-8 min-h-[200px]"
+    >
+      {
+        profiles.map((profile, index) => (
+          <div
+            id={profile.id}
+            class={`${profile.size} rounded-full flex-shrink-0 overflow-hidden cursor-grab draggable-profile select-none !aspect-square`}
+            style={`position: relative; left: ${profile.xOffset}px; top: ${profile.yOffset}px; will-change: transform;`}
+            data-initial-x={profile.xOffset}
+            data-initial-y={profile.yOffset}
+          >
+            {profile.image ? (
+              <Image
+                src={profile.image}
+                alt={profile.name}
+                class="object-cover size-full"
+                draggable="false"
+                loading="lazy"
+              />
+            ) : (
+              <div
+                class={`w-full h-full bg-gradient-to-br ${profile.gradient}`}
+              />
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { createDraggable } from "animejs";
+
+  function initializeDraggables() {
+    const draggableProfiles = document.querySelectorAll(".draggable-profile");
+
+    draggableProfiles.forEach((profile) => {
+      createDraggable(profile);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeDraggables);
+  } else {
+    initializeDraggables();
+  }
+</script>
+
+<style>
+  .draggable-profile {
+    position: relative;
+    user-select: none;
+    touch-action: none;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .draggable-profile:hover {
+    z-index: 20;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+  }
+
+  .draggable-profile img {
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .draggable-profile {
+      transition: none;
+    }
+  }
+</style>
