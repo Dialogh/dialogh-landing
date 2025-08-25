@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+
+let { title, description, image, number, status, author, className } =
+  Astro.props;
+---
+
+<div
+  class={`bg-[#FFFCF6]/10 rounded-2xl sm:rounded-3xl shadow-lg ${image ? "p-2 sm:p-4" : "p-4 sm:p-6"} flex flex-col min-w-[250px] sm:min-w-[300px]  border border-[#FFFCF6]/10 relative animate-card hover-lift scale-in-init ${className}`}
+  data-animate="scale"
+>
+  {
+    number && (
+      <div class="text-6xl sm:text-8xl lg:text-9xl font-thin text-[#FFFCF6]/50 mb-16 sm:mb-20">
+        {number}.
+      </div>
+    )
+  }
+  {
+    image && (
+      <Image
+        src={image}
+        alt={title}
+        class="rounded-lg mb-6 sm:mb-8 w-full h-auto"
+      />
+    )
+  }
+  {
+    author && (
+      <div class=" flex items-center font-medium text-[#FFFCF6]/80 mb-4">
+        <Image
+          src={author.image}
+          alt="Author"
+          class="inline-block size-8 rounded-full mr-2"
+        />
+        {author.name}
+      </div>
+    )
+  }
+  {
+    title && (
+      <h2 class="text-base sm:text-lg font-medium mb-2 sm:mb-4 leading-tight">
+        {title}
+      </h2>
+    )
+  }
+  {
+    description && (
+      <p class=" text-[#FFFCF6]/70 mb-3 sm:mb-4 leading-relaxed line-clamp-[9]">
+        {description}
+      </p>
+    )
+  }
+  {
+    status && (
+      <span class="text-xs absolute z-10 bg-black/30 text-invert px-2 py-1 w-fit h-fit rounded-md sm:rounded-lg top-8 right-8">
+        {status}
+      </span>
+    )
+  }
+</div>
