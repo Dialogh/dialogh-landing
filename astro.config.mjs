@@ -2,6 +2,7 @@
 import { defineConfig, envField } from "astro/config";
 
 import react from "@astrojs/react";
+import node from "@astrojs/node";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -12,6 +13,7 @@ import netlify from "@astrojs/netlify";
 import partytown from "@astrojs/partytown";
 
 import playformCompress from "@playform/compress";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,6 +29,11 @@ export default defineConfig({
     },
   },
   integrations: [
+    icon({
+      include: {
+        ic: ["baseline-discord"],
+      },
+    }),
     react(),
     partytown({
       config: {
