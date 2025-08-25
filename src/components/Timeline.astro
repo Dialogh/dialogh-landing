@@ -1,0 +1,227 @@
+---
+// Timeline events - these are the main milestones
+const timelineEvents = [
+  {
+    title: "Dialogh was born",
+    date: "Jan 2025",
+  },
+  {
+    title: "We reached 100 members",
+    date: "Feb 2025",
+  },
+  {
+    title: "We reached 200 members",
+    date: "Apr 2025",
+  },
+  {
+    title: "Server Disappeared",
+    date: "Jun 2025",
+  },
+  {
+    title: "A new beginning",
+    date: "Aug 2025",
+  }
+];
+
+// Floating badges - these are only shown on desktop
+const floatingBadges = [
+  {
+    title: "Founding 200",
+    position: 50, // Position as percentage along timeline (between events 2 and 3)
+    direction: "above" // or "below"
+  },
+  {
+    title: "The AI Hour",
+    position: 18, // Position as percentage along timeline (between events 1 and 2)
+    direction: "below"
+  },
+  {
+    title: "Pixel perfect(ish)",
+    position: 60, // Position as percentage along timeline (between events 3 and 4)
+    direction: "below"
+  }
+];
+---
+
+<section id="timeline" class="text-[#FFFCF6]">
+  <div class="bg-white/10 py-2 px-4 rounded-full text-white/50 w-fit mx-auto mt-52 text-xs">
+    Timeline
+  </div>
+
+  <div class="">
+    <div class="mt-24 max-w-2xl mx-auto px-4 flex flex-col gap-9">
+      <div class="w-full flex justify-end">
+        <div class="bg-white/20 px-3 py-2 sm:px-4 w-fit rounded-2xl max-w-xs sm:max-w-md">
+          <span class="text-sm sm:text-base">When was Dialogh created — and what's the journey been like so far?</span>
+        </div>
+      </div>
+
+      <div class="max-w-2xl ">
+        <p class="text-base sm:text-lg">
+            Dialogh started in early 2025 with a simple goal: to bring curious minds <br class="hidden sm:block"> together. here is the timeline
+        </p>
+      </div>
+    </div>
+
+    <!-- DESKTOP TIMELINE (Hidden on mobile) -->
+    <div class="hidden sm:block mt-12 sm:mt-20 overflow-x-auto relative">
+      <!-- Background dashed line for visual effect -->
+      <div class="absolute mt-34 w-full h-px border-[1px] border-dashed border-white/50"></div>
+
+      <div class="sm:max-w-4xl mx-auto relative py-20 sm:py-32">
+        <!-- Horizontal dashed timeline line -->
+        <div class="absolute top-1/2 left-16 right-16 h-0 border-t-[1px] border border-white/80 transform -translate-y-1/2"></div>
+
+        <!-- Timeline Events Container -->
+        <div class="relative flex justify-between items-center px-16">
+          {timelineEvents.map((event, index) => (
+            <div class="relative flex flex-col items-center">
+              <!-- Timeline node -->
+              <div class="size-4 p-2 bg-black rounded-full shadow-md z-20 relative border border-white/50 flex items-center justify-center">
+                <div class="bg-white/80 absolute z-20 size-2 rounded-full"></div>
+              </div>
+
+              <!-- Event content below timeline -->
+              <div class="absolute top-6 left-1/2 transform -translate-x-1/2 text-center min-w-[120px] max-w-[150px]">
+                <div class="text-sm font-medium text-white/90 mb-1 leading-tight">
+                  {event.title}
+                </div>
+                <div class="text-xs text-white/70">
+                  {event.date}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Floating Badges -->
+        {floatingBadges.map((badge) => (
+          <div
+            class="absolute z-30 timeline-badge"
+            style={`left: ${badge.position}%; ${badge.direction === 'above' ? 'top: 10%;' : 'bottom: 0%;'}`}
+          >
+            <!-- Badge -->
+            <div class="relative flex flex-col items-center">
+              {badge.direction === 'above' ? (
+                <>
+                  <!-- Badge above timeline -->
+                  <div class="bg-white/10 px-3 py-1.5 rounded-full text-xs whitespace-nowrap border border-white/50">
+                    {badge.title}
+                  </div>
+                  <!-- Vertical connecting line down to timeline -->
+                  <div class="w-px h-20 bg-white/50"></div>
+                </>
+              ) : (
+                <>
+                  <!-- Vertical connecting line up to timeline -->
+                  <div class="w-px h-27 bg-white/50"></div>
+                  <!-- Badge below timeline -->
+                  <div class="bg-white/10 px-3 py-1.5 rounded-full text-xs whitespace-nowrap border border-white/50">
+                    {badge.title}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- MOBILE TIMELINE (Hidden on desktop) -->
+    <div class="block sm:hidden mt-12">
+      <div class="w-full sm:max-w-sm max-w-md mx-auto px-4 relative">
+        <!-- Vertical connecting line -->
+        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/80 via-white/40 to-transparent transform -translate-x-1/2"></div>
+
+        <!-- Timeline Events -->
+        <div class="space-y-24">
+          {timelineEvents.map((event, index) => (
+            <div class="relative flex flex-col items-center">
+              <!-- Timeline node -->
+              <div class="size-3 bg-black rounded-full shadow-md z-20 relative border border-white flex items-center justify-center">
+                <div class="bg-white absolute z-20 size-1.5 rounded-full"></div>
+              </div>
+
+              <!-- Event content -->
+              <div class={`text-center w-[100px] ${index % 2 === 0 ? 'text-left ml-32 -mt-4' : 'text-right mr-32 -mt-4'} `}>
+                <div class="text-sm font-medium text-white/90 mb-1 leading-tight">
+                  {event.title}
+                </div>
+                <div class="text-xs text-white/70">
+                  {event.date}
+                </div>
+              </div>
+
+              <!-- Milestone badges positioned left/right with connecting lines -->
+              {index === 1 && (
+                <div class="absolute -top-1.5 left-full ml-6 min-w-0">
+                  <!-- Connecting line from center to badge -->
+                  <div class="absolute top-3 -left-6 w-6 h-px bg-white/40"></div>
+                  <!-- Badge -->
+                  <div class="bg-white/10 px-2 py-1 rounded-full text-xs border border-white/30 text-white/80 whitespace-nowrap">
+                    The AI Hour
+                  </div>
+                </div>
+              )}
+              {index === 2 && (
+                <div class="absolute -top-1.5 right-full mr-6 min-w-0">
+                  <!-- Badge -->
+                  <div class="bg-white/10 px-2 py-1 rounded-full text-xs border border-white/30 text-white/80 whitespace-nowrap text-right">
+                    Founding 200
+                  </div>
+                  <!-- Connecting line from badge to center -->
+                  <div class="absolute top-3 -right-6 w-6 h-px bg-white/40"></div>
+                </div>
+              )}
+              {index === 3 && (
+                <div class="absolute -top-1.5 left-full ml-6 min-w-0">
+                  <!-- Connecting line from center to badge -->
+                  <div class="absolute top-3 -left-6 w-6 h-px bg-white/40"></div>
+                  <!-- Badge -->
+                  <div class="bg-white/10 px-2 py-1 rounded-full text-xs border border-white/30 text-white/80 whitespace-nowrap">
+                    Pixel perfect(ish)
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-badge {
+    transform: translateX(-50%);
+  }
+
+  /* Mobile milestone badges responsive positioning */
+  @media (max-width: 640px) {
+    /* Ensure badges don't overflow on small screens */
+    .block.sm\:hidden {
+      overflow-x: visible;
+    }
+
+    /* Right-side badges */
+    .absolute.left-full {
+      left: calc(50% + 0.5rem);
+    }
+
+    /* Left-side badges */
+    .absolute.right-full {
+      right: calc(50% + 0.5rem);
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 320px) {
+    .absolute.left-full {
+      left: calc(50% + 0.25rem);
+    }
+
+    .absolute.right-full {
+      right: calc(50% + 0.25rem);
+    }
+  }
+</style>
