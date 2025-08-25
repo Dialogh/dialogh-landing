@@ -1,166 +1,177 @@
 ---
 import "../styles/global.css";
+// import "../styles/animations.css";
 import "lenis/dist/lenis.css";
 import { AstroFont } from "astro-font";
 import Toast from "../components/Toast.astro";
 
 interface Props {
-  title: string;
+    title: string;
 }
 
 const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <AstroFont
-      config={[
-        {
-          name: "PP Neue Montreal",
-          src: [
+    <head>
+        <AstroFont
+            config={[
+                {
+                    name: "PP Neue Montreal",
+                    src: [
+                        {
+                            style: "normal",
+                            weight: "400",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff",
+                        },
+                        {
+                            style: "italic",
+                            weight: "400",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-italic.woff",
+                        },
+                        {
+                            style: "normal",
+                            weight: "100",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-thin.woff",
+                        },
+                        {
+                            style: "normal",
+                            weight: "500",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff",
+                        },
+                        {
+                            style: "italic",
+                            weight: "600",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-semibolditalic.woff",
+                        },
+                        {
+                            style: "normal",
+                            weight: "700",
+                            path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff",
+                        },
+                    ],
+                    preload: true,
+                    display: "swap",
+                    selector: "body",
+                    fallback: "sans-serif",
+                },
+            ]}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <!-- Primary Meta Tags -->
+        <title>{title}</title>
+        <meta name="title" content="Dialogh - Community for tech enthusiasts" />
+        <meta
+            name="description"
+            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+        />
+        <meta name="author" content="Dialogh" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://dialogh.in" />
+        <meta
+            property="og:title"
+            content="Dialogh - Community for tech enthusiasts"
+        />
+        <meta
+            property="og:description"
+            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+        />
+        <meta property="og:image" content="https://dialogh.in/og.png" />
+        <meta property="og:site_name" content="Dialogh" />
+        <meta property="og:locale" content="en_US" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://dialogh.in" />
+        <meta
+            name="twitter:title"
+            content="Dialogh - Community for tech enthusiasts"
+        />
+        <meta
+            name="twitter:description"
+            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
+        />
+        <meta name="twitter:image" content="https://dialogh.in/og.png" />
+        <meta name="twitter:creator" content="@dialogh_in" />
+
+        <!-- Mobile specific meta tags -->
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content={title} />
+        <meta name="format-detection" content="telephone=no" />
+
+        <!-- Additional Meta Tags -->
+        <meta name="theme-color" content="#00000" />
+        <meta
+            name="keywords"
+            content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="language" content="English" />
+
+        <!-- Links -->
+        <link rel="canonical" href="https://dialogh.in" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+        <!-- Scripts -->
+
+        <script type="application/ld+json">
             {
-              style: "normal",
-              weight: "400",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff",
-            },
-            {
-              style: "italic",
-              weight: "400",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-italic.woff",
-            },
-            {
-              style: "normal",
-              weight: "100",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-thin.woff",
-            },
-            {
-              style: "normal",
-              weight: "500",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff",
-            },
-            {
-              style: "italic",
-              weight: "600",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-semibolditalic.woff",
-            },
-            {
-              style: "normal",
-              weight: "700",
-              path: "https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff",
-            },
-          ],
-          preload: true,
-          display: "swap",
-          selector: "body",
-          fallback: "sans-serif",
-        },
-      ]}
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content="Dialogh - Community for tech enthusiasts" />
-    <meta
-      name="description"
-      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-    />
-    <meta name="author" content="Dialogh" />
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Dialogh",
+                "url": "https://dialogh.in",
+                "sameAs": [
+                    "https://instagram.com/dialogh.in",
+                    "https://linkedin.com/company/dialogh-community",
+                    "https://dsc.gg/dialogh"
+                ]
+            }
+        </script>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dialogh.in" />
-    <meta
-      property="og:title"
-      content="Dialogh - Community for tech enthusiasts"
-    />
-    <meta
-      property="og:description"
-      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-    />
-    <meta property="og:image" content="https://dialogh.in/og.png" />
-    <meta property="og:site_name" content="Dialogh" />
-    <meta property="og:locale" content="en_US" />
+        <script
+            defer
+            type="text/partytown"
+            src="https://cloud.umami.is/script.js"
+            data-website-id="0c560206-7fba-45d9-9f57-5d1870738ef1"></script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://dialogh.in" />
-    <meta
-      name="twitter:title"
-      content="Dialogh - Community for tech enthusiasts"
-    />
-    <meta
-      name="twitter:description"
-      content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-    />
-    <meta name="twitter:image" content="https://dialogh.in/og.png" />
-    <meta name="twitter:creator" content="@dialogh_in" />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body class="bg-primary">
+        <slot />
+        <Toast />
+    </body><script>
+        import Lenis from "lenis";
+        // import dialoghAnimations from "../scripts/init-animations.ts";
 
-    <!-- Mobile specific meta tags -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content={title} />
-    <meta name="format-detection" content="telephone=no" />
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis({
+                autoRaf: true,
+                smoothWheel: true,
+                syncTouch: true,
+            });
+            window.lenis = lenis;
 
-    <!-- Additional Meta Tags -->
-    <meta name="theme-color" content="#00000" />
-    <meta
-      name="keywords"
-      content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="language" content="English" />
+            // Initialize animations after Lenis is ready
+            // setTimeout(() => {
+            //     if (dialoghAnimations) {
+            //         console.log("Animations initialized");
+            //     }
+            // }, 100);
+        });
 
-    <!-- Links -->
-    <link rel="canonical" href="https://dialogh.in" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        // function raf(time: number) {
+        //   lenis.raf(time);
+        //   requestAnimationFrame(raf);
+        // }
 
-    <!-- Scripts -->
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Dialogh",
-        "url": "https://dialogh.in",
-        "sameAs": [
-          "https://instagram.com/dialogh.in",
-          "https://linkedin.com/company/dialogh-community",
-          "https://dsc.gg/dialogh"
-        ]
-      }
+        // requestAnimationFrame(raf);
     </script>
-
-    <script
-      defer
-      type="text/partytown"
-      src="https://cloud.umami.is/script.js"
-      data-website-id="0c560206-7fba-45d9-9f57-5d1870738ef1"></script>
-
-    <meta name="generator" content={Astro.generator} />
-  </head>
-  <body>
-    <slot />
-    <Toast />
-  </body><script>
-    import Lenis from "lenis";
-    document.addEventListener("DOMContentLoaded", () => {
-      const lenis = new Lenis({
-        autoRaf: true,
-        smoothWheel: true,
-        syncTouch: true,
-      });
-    });
-
-    // function raf(time: number) {
-    //   lenis.raf(time);
-    //   requestAnimationFrame(raf);
-    // }
-
-    // requestAnimationFrame(raf);
-  </script>
 </html>
