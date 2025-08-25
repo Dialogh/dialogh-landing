@@ -1,0 +1,63 @@
+---
+import Arrow from "../assets/arrow.svg";
+import { Image } from "astro:assets";
+---
+
+<section id="about" class="text-[#FFFCF6]">
+  <div
+    class="bg-white/10 py-2 px-4 rounded-full text-white/50 w-fit mx-auto mt-52 text-xs"
+  >
+    Choices to make
+  </div>
+
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="mt-24 flex flex-col gap-9">
+      <div class="w-full flex justify-end">
+        <div
+          class="bg-white/20 px-4 py-2 w-fit rounded-full max-w-xs sm:max-w-none"
+        >
+          <span class="text-sm sm:text-base"
+            >Is Dialogh the right place for me?</span
+          >
+        </div>
+      </div>
+      <div class="max-w-xl">
+        <p class="text-base sm:text-lg">
+          If you're curious, creative, and tired of noisy communities that feel
+          transactional — yes, Dialogh might just be what you’re looking for.
+        </p>
+        <p class="py-6 text-base sm:text-lg">We’re for:</p>
+
+        <p class="text-base sm:text-lg">
+          → Developers who think beyond code <br /> → Designers who care about clarity
+          over trends <br /> → Builders who value ideas, not just output <br /> →
+          Learners who ask real questions <br /> → Anyone who wants to grow in public,
+          with intention
+          <br />
+          <br />
+          You don’t need to be “ready” — you just need to show up. Everything else
+          builds from there.
+        </p>
+
+        <hr class="text-[#FFFCF666]/40 my-10" />
+
+        <p class="text-base sm:text-lg">
+          🚀 Join the community that's building with purpose. <br /> Jump in, stay
+          curious, and let’s create something real — together.
+        </p>
+        <a
+          href="https://dsc.gg/dialogh"
+          target="_blank"
+          class="bg-white mt-6 w-fit text-black py-2.5 px-6 flex items-center cursor-pointer gap-2 rounded-full font-medium text-sm sm:text-base hover:bg-white/90 transition-colors duration-200"
+        >
+          Join Now
+          <Image
+            src={Arrow}
+            alt="arrow"
+            class="w-4 h-4 sm:w-5 sm:h-5 invert"
+          /></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
