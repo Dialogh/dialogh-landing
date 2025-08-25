@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../../assets/logo.svg";
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="relative z-1">
+  <div class="flex items-center justify-between py-3 sm:py-4 px-0">
+    <div class="text-base sm:text-lg text-[#000000]/50 flex items-center">
+      <Image
+        src={Logo}
+        alt="Dialogh Logo"
+        class="inline-block w-5 h-5 sm:w-6 sm:h-6 mr-2"
+      />
+      <h2 class="text-base sm:text-lg font-medium">dialogh</h2>
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="flex space-x-4 lg:space-x-6 items-center">
+      <li>
+        <a
+          href="https://dsc.gg/dialogh"
+          target="_blank"
+          class="hover:text-[#000000]/80 transition-colors duration-200"
+          ><Icon
+            class="text-[#000000]/50 hover:text-[#000000]/80 sm:w-5.5 sm:h-6 transition-colors duration-200"
+            name="simple-icons:discord"
+          /></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/dialogh.in/"
+          target="_blank"
+          class="hover:text-[#000000]/80 transition-colors duration-200"
+          ><Icon
+            class="text-[#000000]/50 hover:text-[#000000]/80 sm:w-5 h-5 transition-colors duration-200"
+            name="simple-icons:instagram"
+          /></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/company/dialogh-community/"
+          target="_blank"
+          class="hover:text-[#000000]/80 transition-colors duration-200"
+          ><Icon
+            class="text-[#000000]/50 hover:text-[#000000]/80 sm:w-5 h-5 transition-colors duration-200"
+            name="simple-icons:linkedin"
+          /></a
+        >
+      </li>
+      <li>
+        <a
+          href="mailto:dialogh-community@gmail.com"
+          target="_blank"
+          class="hover:text-[#000000]/80 transition-colors duration-200"
+          ><Icon
+            class="text-[#000000]/50 hover:text-[#000000]/80 sm:w-5.5 sm:h-6 transition-colors duration-200"
+            name="simple-icons:gmail"
+          /></a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="sm:hidden bg-[#FFFCF6] border-t border-[#000000]/10 hidden"
+    id="mobile-menu"
+  >
+    <div class="px-3 py-4 space-y-4">
+      <a
+        href="/"
+        class="flex items-center space-x-3 text-[#000000]/70 hover:text-[#000000] transition-colors duration-200"
+      >
+        <Icon class="w-5 h-5" name="simple-icons:discord" />
+        <span>Discord</span>
+      </a>
+      <a
+        href="/about"
+        class="flex items-center space-x-3 text-[#000000]/70 hover:text-[#000000] transition-colors duration-200"
+      >
+        <Icon class="w-5 h-5" name="simple-icons:instagram" />
+        <span>Instagram</span>
+      </a>
+      <a
+        href="/contact"
+        class="flex items-center space-x-3 text-[#000000]/70 hover:text-[#000000] transition-colors duration-200"
+      >
+        <Icon class="w-5 h-5" name="simple-icons:linkedin" />
+        <span>LinkedIn</span>
+      </a>
+      <a
+        href="/contact"
+        class="flex items-center space-x-3 text-[#000000]/70 hover:text-[#000000] transition-colors duration-200"
+      >
+        <Icon class="w-5 h-5" name="simple-icons:gmail" />
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener("click", function () {
+        const isHidden = mobileMenu.classList.contains("hidden");
+
+        if (isHidden) {
+          mobileMenu.classList.remove("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "true");
+          // Change hamburger to X
+          mobileMenuButton.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          `;
+        } else {
+          mobileMenu.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+          // Change X back to hamburger
+          mobileMenuButton.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          `;
+        }
+      });
+    }
+  });
+
+  // Re-initialize on page load for SPA behavior
+  document.addEventListener("astro:page-load", function () {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileMenuButton && mobileMenu) {
+      // Reset menu state
+      mobileMenu.classList.add("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", "false");
+
+      // Remove existing listeners and add new ones
+      const newButton = mobileMenuButton.cloneNode(true);
+      mobileMenuButton.parentNode?.replaceChild(newButton, mobileMenuButton);
+
+      newButton.addEventListener("click", function () {
+        const isHidden = mobileMenu.classList.contains("hidden");
+
+        if (isHidden) {
+          mobileMenu.classList.remove("hidden");
+          newButton.setAttribute("aria-expanded", "true");
+          newButton.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          `;
+        } else {
+          mobileMenu.classList.add("hidden");
+          newButton.setAttribute("aria-expanded", "false");
+          newButton.innerHTML = `
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          `;
+        }
+      });
+    }
+  });
+</script>
