@@ -1,0 +1,82 @@
+---
+import Card from "./new/Card.astro";
+import Carousel from "./Carousel.astro";
+import AiHour from "../assets/images/ai-hour.png";
+import Ctrl from "../assets/images/ctrl.png";
+import Founding from "../assets/images/founding.png";
+import PixelPerfect from "../assets/images/pixel-perfect.png";
+let cardElements = [
+    {
+        title: "Ai Hour",
+        description:
+            "Open discussion on how AI shows up in real life — honest takes, no hype.",
+        image: AiHour,
+    },
+    {
+        title: "Founding 200",
+        description:
+            "Celebrated our first 200 members by spotlighting the people who shaped Dialogh early on.",
+        image: Founding,
+    },
+    {
+        title: "Pixel perfect(ish)",
+        description:
+            "A beginner-friendly design series for non-designers and devs — breaking down visual thinking, one topic at a time.",
+        status: "ongoing Series)",
+        image: PixelPerfect,
+    },
+    {
+        title: "Ctrl + Create",
+        description:
+            "Something bold. Something collaborative. You’ll want to be around for this.",
+        status: "Coming Soon",
+        image: Ctrl,
+    },
+];
+---
+
+<section id="events" class="text-[#FFFCF6]">
+    <div
+        class="bg-white/10 py-2 px-4 rounded-full text-white/50 w-fit mx-auto mt-52 text-xs"
+    >
+        Key Events
+    </div>
+
+    <div class="max-w-2xl mx-auto px-4">
+        <div class="mt-24 flex flex-col gap-9">
+            <div class="w-full flex justify-end">
+                <div
+                    class="bg-white/20 px-4 py-2 w-fit sm:rounded-full rounded-2xl max-w-xs sm:max-w-none"
+                >
+                    <span class="text-sm sm:text-base"
+                        >Are there any past events & initiatives Dialogh took?</span
+                    >
+                </div>
+            </div>
+            <div class="max-w-xl">
+                <p class="text-base sm:text-lg">
+                    Absolutely. <br />
+
+                    Dialogh has hosted a range of events and creative
+                    initiatives built around real interaction and intentional
+                    growth:
+                </p>
+            </div>
+        </div>
+        <div class="mt-8">
+            <Carousel id="events-cards" showArrows={true}>
+                {
+                    cardElements.map((card) => (
+                        <Card
+                            className="min-h-[400px]"
+                            title={card.title}
+                            description={card.description}
+                            image={card.image}
+                            status={card?.status}
+                        />
+                    ))
+                }
+            </Carousel>
+        </div>
+    </div>
+</section>
