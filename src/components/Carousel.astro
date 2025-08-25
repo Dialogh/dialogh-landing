@@ -1,0 +1,427 @@
+---
+interface Props {
+    id: string;
+    showArrows?: boolean;
+    showDots?: boolean;
+    spaceBetween?: number;
+    loop?: boolean;
+    autoplay?: boolean;
+    autoplayDelay?: number;
+}
+
+const {
+    id = "carousel",
+    showArrows = true,
+    showDots = true,
+    spaceBetween = 16,
+    loop = true,
+    autoplay = false,
+    autoplayDelay = 3000,
+} = Astro.props;
+---
+
+<div class="swiper-container relative" data-swiper-id={id}>
+    <!-- Swiper wrapper -->
+    <div class="swiper rounded-2xl" id={`swiper-${id}`}>
+        <div class="swiper-wrapper">
+            <slot />
+        </div>
+    </div>
+
+    <!-- Navigation arrows -->
+
+    <div class="swiper-navigation flex items-center gap-2 mt-4 justify-end">
+        <button
+            class="swiper-button-prev-custom bg-white/10 hover:bg-white/20 rounded-full p-2 text-white/70 hover:text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            data-prev={id}
+            aria-label="Previous slide"
+            type="button"
+        >
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+        </button>
+        <button
+            class="swiper-button-next-custom bg-white/10 hover:bg-white/20 rounded-full p-2 text-white/70 hover:text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            data-next={id}
+            aria-label="Next slide"
+            type="button"
+        >
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    import { Swiper } from "swiper";
+    import { Navigation, Pagination } from "swiper/modules";
+    import type { Swiper as SwiperType } from "swiper/types";
+    import "swiper/css";
+    import "swiper/css/navigation";
+    import "swiper/css/pagination";
+
+    interface WindowWithCarousel extends Window {
+        [key: string]: any;
+    }
+
+    declare var window: WindowWithCarousel;
+
+    // Validate Swiper import
+    if (!Swiper) {
+        console.error(
+            "Swiper library failed to load. Carousels will not work.",
+        );
+    }
+
+    function initSwipers(): void {
+        const swiperContainers = document.querySelectorAll("[data-swiper-id]");
+
+        // Helper functions defined outside the loop
+        function updatePaginationStyling(
+            swiperInstance: SwiperType,
+            paginationContainer: HTMLElement | null,
+        ): void {
+            if (!paginationContainer) return;
+
+            const bullets = paginationContainer.querySelectorAll(
+                ".swiper-pagination-bullet-custom",
+            );
+        }
+
+        function updateNavigationState(
+            swiperInstance: SwiperType,
+            prevBtn: HTMLButtonElement | null,
+            nextBtn: HTMLButtonElement | null,
+        ): void {
+            // Get current slide info for debugging
+            const activeIndex = swiperInstance.activeIndex;
+            const slidesLength = swiperInstance.slides.length;
+            const currentBreakpoint = swiperInstance.currentBreakpoint;
+            const slidesPerView = swiperInstance.params.slidesPerView;
+
+            console.log(`Navigation state check:`, {
+                activeIndex,
+                slidesLength,
+                currentBreakpoint,
+                slidesPerView,
+                isBeginning: swiperInstance.isBeginning,
+                isEnd: swiperInstance.isEnd,
+            });
+        }
+
+        swiperContainers.forEach((container) => {
+            const id = container.getAttribute("data-swiper-id");
+            if (!id) return;
+
+            const swiperElement = container.querySelector(
+                `#swiper-${id}`,
+            ) as HTMLElement;
+            const prevButton = container.querySelector(
+                `[data-prev="${id}"]`,
+            ) as HTMLButtonElement;
+            const nextButton = container.querySelector(
+                `[data-next="${id}"]`,
+            ) as HTMLButtonElement;
+
+            if (!swiperElement) {
+                console.warn(`Swiper element not found for id: ${id}`);
+                return;
+            }
+
+            // Convert slot content to swiper-slides
+            const swiperWrapper =
+                swiperElement.querySelector(".swiper-wrapper");
+            if (!swiperWrapper) {
+                console.warn(`Swiper wrapper not found for id: ${id}`);
+                return;
+            }
+
+            const children = Array.from(swiperWrapper.children);
+            children.forEach((child) => {
+                if (!child.classList.contains("swiper-slide")) {
+                    child.classList.add("swiper-slide");
+                }
+            });
+
+            if (children.length === 0) {
+                console.warn(`No slides found for carousel: ${id}`);
+                return;
+            }
+
+            // Initialize button states - enable them by default when we have multiple slides
+            const hasMultipleSlides = children.length > 1;
+
+            const swiperConfig: any = {
+                modules: [Navigation, Pagination],
+                spaceBetween: 16,
+                slidesPerView: 1,
+                centeredSlides: false,
+                centerInsufficientSlides: true,
+                grabCursor: true,
+                snapGrid: true,
+                loop: true,
+                allowTouchMove: true,
+                watchOverflow: false,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 16,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: Math.min(2, children.length),
+                        spaceBetween: 24,
+                    },
+                    1280: {
+                        slidesPerView: Math.min(2, children.length),
+                        spaceBetween: 24,
+                    },
+                },
+                navigation: false,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true,
+                },
+                a11y: {
+                    prevSlideMessage: "Previous slide",
+                    nextSlideMessage: "Next slide",
+                    paginationBulletMessage: "Go to slide {{index}}",
+                },
+                on: {
+                    init: function (this: SwiperType) {
+                        updateNavigationState(this, prevButton, nextButton);
+                    },
+                    slideChange: function (this: SwiperType) {
+                        updateNavigationState(this, prevButton, nextButton);
+                    },
+                    breakpoint: function (this: SwiperType) {
+                        updateNavigationState(this, prevButton, nextButton);
+                    },
+                },
+            };
+
+            try {
+                // Validate Swiper before creating instance
+                if (!Swiper) {
+                    throw new Error("Swiper library not available");
+                }
+
+                const swiper = new Swiper(swiperElement, swiperConfig);
+
+                // Validate swiper instance was created successfully
+                if (!swiper || !swiper.slideNext) {
+                    throw new Error("Swiper instance creation failed");
+                }
+
+                // Debug logging
+                console.log(`Carousel "${id}" initialized:`, {
+                    slides: children.length,
+                    allowSlideNext: swiper.allowSlideNext,
+                    allowSlidePrev: swiper.allowSlidePrev,
+                    swiper: swiper,
+                });
+
+                // Add debug function to window for testing
+                window[`testCarousel_${id}`] = {
+                    slideNext: () => swiper.slideNext(),
+                    slidePrev: () => swiper.slidePrev(),
+                    swiper: swiper,
+                };
+
+                // Add navigation button listeners
+                if (prevButton) {
+                    prevButton.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        swiper.slidePrev();
+                    });
+                }
+
+                if (nextButton) {
+                    nextButton.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    });
+                }
+            } catch (error) {
+                console.error(`Failed to initialize carousel "${id}":`, error);
+
+                // Add fallback behavior when carousel fails
+                if (prevButton) {
+                    prevButton.style.display = "none";
+                }
+                if (nextButton) {
+                    nextButton.style.display = "none";
+                }
+
+                // Add a CSS class to enable basic horizontal scroll as fallback
+                swiperElement.classList.add("carousel-fallback");
+                console.log(
+                    `Carousel "${id}" falling back to basic scroll behavior`,
+                );
+            }
+        });
+    }
+
+    // Initialize with proper error handling
+    function safeInit(): void {
+        try {
+            initSwipers();
+        } catch (error) {
+            console.error("Failed to initialize carousels:", error);
+        }
+    }
+
+    // Initialize on DOM load
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", safeInit);
+    } else {
+        // DOM is already ready, initialize immediately
+        setTimeout(safeInit, 0);
+    }
+
+    // Re-initialize on Astro page load for SPA behavior
+    document.addEventListener("astro:page-load", safeInit);
+
+    // Also handle astro:after-swap for better SPA support
+    document.addEventListener("astro:after-swap", safeInit);
+</script>
+
+<style>
+    /* Custom Swiper Styles */
+    .swiper-container {
+        --swiper-theme-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Hide default Swiper navigation */
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
+    /* Hide default pagination */
+    .swiper-pagination {
+        display: none;
+    }
+
+    /* Custom pagination bullets */
+    .swiper-pagination-bullet-custom {
+        transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active-custom {
+        background: rgba(255, 255, 255, 0.8) !important;
+        transform: scale(1.2);
+    }
+
+    /* Smooth slide transitions */
+    .swiper-slide {
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+        height: auto;
+        display: flex;
+    }
+
+    /* Ensure slides are flex containers for proper card sizing */
+    .swiper-slide > * {
+        flex: 1;
+        min-height: 100%;
+    }
+
+    /* Mobile touch feedback */
+    @media (hover: none) {
+        .swiper {
+            cursor: grab;
+        }
+
+        .swiper:active {
+            cursor: grabbing;
+        }
+    }
+
+    /* Disabled button styles */
+    .swiper-button-prev-custom:disabled,
+    .swiper-button-next-custom:disabled {
+        opacity: 0.4 !important;
+        cursor: not-allowed !important;
+    }
+
+    /* Focus styles for accessibility */
+    .swiper-button-prev-custom:focus,
+    .swiper-button-next-custom:focus,
+    .swiper-pagination-bullet-custom:focus {
+        outline: 2px solid rgba(255, 255, 255, 0.8);
+        outline-offset: 2px;
+    }
+
+    /* Ensure proper overflow handling */
+    .swiper {
+        overflow: hidden;
+    }
+
+    /* Improve mobile scrolling */
+    .swiper-wrapper {
+        transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Fallback styles when Swiper fails */
+    .carousel-fallback .swiper-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+
+    .carousel-fallback .swiper-slide {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin-right: 16px;
+    }
+
+    .carousel-fallback .swiper-wrapper::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .carousel-fallback .swiper-wrapper::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+
+    .carousel-fallback .swiper-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .carousel-fallback .swiper-wrapper::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+</style>
