@@ -1,0 +1,101 @@
+---
+import Card from "./new/Card.astro";
+import Carousel from "./Carousel.astro";
+
+let cardElements = [
+  {
+    title: "Curated, Not Crowded",
+    description:
+      "We filter for quality — not noise. Every discussion, post, and challenge is intentional.",
+    number: "1",
+  },
+  {
+    title: "Challenges with Context",
+    description:
+      "Our monthly challenges aren’t just tasks — they’re designed to help you think, build, and grow creatively.",
+    number: "2",
+  },
+  {
+    title: "Built Around People",
+    description:
+      "We don’t just share things. We talk about them. Dialogh thrives on honest, smart, idea-first discussion.",
+    number: "3",
+  },
+  {
+    title: "Conversation > Content",
+    description:
+      "This isn’t a hype wave. It’s a space you grow into — not out of.",
+    number: "4",
+  },
+];
+---
+
+<section id="about" class="text-[#FFFCF6]">
+  <div
+    class="bg-white/10 py-2 px-4 rounded-full text-white/50 w-fit mx-auto mt-52 text-xs"
+  >
+    About
+  </div>
+
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="mt-24 flex flex-col gap-9">
+      <div class="w-full flex justify-end">
+        <div
+          class="bg-white/20 px-4 py-2 w-fit rounded-full max-w-xs sm:max-w-none"
+        >
+          <span class="text-sm sm:text-base">So... What Is Dialogh?</span>
+        </div>
+      </div>
+      <div class="max-w-xl">
+        <p class="text-base sm:text-lg">
+          Dialogh is a community for people who think, build, and share — with
+          intention. It’s where developers, designers, and creative minds come
+          together to explore ideas, solve real problems, and grow through
+          collaboration.
+        </p>
+        <p class="py-6 text-lg sm:text-xl">
+          We're not here to go viral. We're here to go deeper.
+        </p>
+
+        <p class="text-base sm:text-lg">
+          Everything inside Dialogh — from the challenges to the conversations —
+          is curated to spark clarity, creativity, and connection. It’s less
+          about keeping up, more about leveling up.
+        </p>
+      </div>
+      <div class="w-full flex justify-end">
+        <div
+          class="bg-white/20 px-4 py-2 w-fit rounded-full max-w-xs sm:max-w-none"
+        >
+          <span class="text-sm sm:text-base">Ok What makes Dialogh unique?</span
+          >
+        </div>
+      </div>
+      <div class="max-w-xl text-base sm:text-lg">
+        <span
+          >Most communities are built to grow. <br />Dialogh is built to mean
+          something. <br />We’re not here for constant pings or empty
+          conversations.<br />We’re here for the people who want to think
+          better, build better, and grow through depth — not just activity.</span
+        >
+      </div>
+    </div>
+    <div class="mt-18">
+      <h2 class="text-base sm:text-lg">✦ Here's what sets us apart:</h2>
+      <div class="mt-8">
+        <Carousel id="about-cards" showArrows={true}>
+          {
+            cardElements.map((card) => (
+              <Card
+                className="min-h-[340px]"
+                title={card.title}
+                description={card.description}
+                number={card.number}
+              />
+            ))
+          }
+        </Carousel>
+      </div>
+    </div>
+  </div>
+</section>
