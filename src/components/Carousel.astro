@@ -20,9 +20,9 @@ const {
 } = Astro.props;
 ---
 
-<div class="swiper-container relative" data-swiper-id={id}>
+<div class="swiper-container relative" data-swiper-id={id} data-loop={loop} data-autoplay={autoplay} data-autoplay-delay={autoplayDelay} data-space-between={spaceBetween}>
     <!-- Swiper wrapper -->
-    <div class="swiper rounded-2xl" id={`swiper-${id}`}>
+    <div class="swiper rounded-2xl overflow-visible" id={`swiper-${id}`}>
         <div class="swiper-wrapper">
             <slot />
         </div>
@@ -74,11 +74,12 @@ const {
 
 <script>
     import { Swiper } from "swiper";
-    import { Navigation, Pagination } from "swiper/modules";
+    import { Navigation, Pagination, Autoplay } from "swiper/modules";
     import type { Swiper as SwiperType } from "swiper/types";
     import "swiper/css";
     import "swiper/css/navigation";
     import "swiper/css/pagination";
+    import "swiper/css/autoplay";
 
     interface WindowWithCarousel extends Window {
         [key: string]: any;
@@ -113,19 +114,26 @@ const {
             prevBtn: HTMLButtonElement | null,
             nextBtn: HTMLButtonElement | null,
         ): void {
-            // Get current slide info for debugging
-            const activeIndex = swiperInstance.activeIndex;
-            const slidesLength = swiperInstance.slides.length;
-            const currentBreakpoint = swiperInstance.currentBreakpoint;
-            const slidesPerView = swiperInstance.params.slidesPerView;
-
-            console.log(`Navigation state check:`, {
-                activeIndex,
-                slidesLength,
-                currentBreakpoint,
-                slidesPerView,
+            if (!prevBtn || !nextBtn) return;
+            
+            // If loop is enabled and working, always enable buttons
+            if (swiperInstance.params.loop) {
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+            } else {
+                // For non-loop carousels, disable based on position
+                prevBtn.disabled = swiperInstance.isBeginning;
+                nextBtn.disabled = swiperInstance.isEnd;
+            }
+            
+            console.log(`Navigation state updated:`, {
+                activeIndex: swiperInstance.activeIndex,
+                slidesLength: swiperInstance.slides.length,
                 isBeginning: swiperInstance.isBeginning,
                 isEnd: swiperInstance.isEnd,
+                loop: swiperInstance.params.loop,
+                prevDisabled: prevBtn.disabled,
+                nextDisabled: nextBtn.disabled
             });
         }
 
@@ -168,40 +176,48 @@ const {
                 return;
             }
 
-            // Initialize button states - enable them by default when we have multiple slides
-            const hasMultipleSlides = children.length > 1;
+            // Get carousel settings from data attributes or use defaults
+            const carouselLoop = container.getAttribute('data-loop') === 'true';
+            const carouselAutoplay = container.getAttribute('data-autoplay') === 'true';
+            const carouselAutoplayDelay = parseInt(container.getAttribute('data-autoplay-delay') || '3000');
+            const carouselSpaceBetween = parseInt(container.getAttribute('data-space-between') || '16');
 
+            // Enable loop only if we have enough slides for the fractional slidesPerView
+            // For loop to work with fractional slidesPerView, we need at least 2x the slidesPerView
+            const maxSlidesPerView = 4; // Our highest slidesPerView is 4
+            const shouldEnableLoop = carouselLoop && children.length >= Math.ceil(maxSlidesPerView * 1.5);
+            
             const swiperConfig: any = {
-                modules: [Navigation, Pagination],
-                spaceBetween: 16,
+                modules: carouselAutoplay ? [Navigation, Pagination, Autoplay] : [Navigation, Pagination],
+                spaceBetween: carouselSpaceBetween,
                 slidesPerView: 1,
                 centeredSlides: false,
                 centerInsufficientSlides: true,
                 grabCursor: true,
-                snapGrid: true,
-                loop: true,
+                loop: shouldEnableLoop,
+                loopAdditionalSlides: shouldEnableLoop ? 2 : 0,
                 allowTouchMove: true,
-                watchOverflow: false,
+                watchOverflow: !shouldEnableLoop,
                 breakpoints: {
                     320: {
                         slidesPerView: 1,
-                        spaceBetween: 16,
+                        spaceBetween: carouselSpaceBetween,
                     },
                     640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+                        slidesPerView: Math.min(2, children.length),
+                        spaceBetween: carouselSpaceBetween + 4,
                     },
                     768: {
-                        slidesPerView: 3,
-                        spaceBetween: 24,
+                        slidesPerView: shouldEnableLoop ? 3.2 : Math.min(2.5, children.length),
+                        spaceBetween: carouselSpaceBetween + 8,
                     },
                     1024: {
-                        slidesPerView: Math.min(2, children.length),
-                        spaceBetween: 24,
+                        slidesPerView: shouldEnableLoop ? 3.5 : Math.min(2.8, children.length),
+                        spaceBetween: carouselSpaceBetween + 8,
                     },
                     1280: {
-                        slidesPerView: Math.min(2, children.length),
-                        spaceBetween: 24,
+                        slidesPerView: shouldEnableLoop ? 4 : Math.min(3.2, children.length),
+                        spaceBetween: carouselSpaceBetween + 8,
                     },
                 },
                 navigation: false,
@@ -209,6 +225,10 @@ const {
                     enabled: true,
                     onlyInViewport: true,
                 },
+                autoplay: carouselAutoplay ? {
+                    delay: carouselAutoplayDelay,
+                    disableOnInteraction: false,
+                } : false,
                 a11y: {
                     prevSlideMessage: "Previous slide",
                     nextSlideMessage: "Next slide",
@@ -381,9 +401,28 @@ const {
         outline-offset: 2px;
     }
 
-    /* Ensure proper overflow handling */
+    /* Allow overflow on medium screens and above for the "coming from right" effect */
     .swiper {
         overflow: hidden;
+    }
+    
+    @media (min-width: 768px) {
+        .swiper {
+            overflow: visible;
+        }
+        
+        .swiper-wrapper {
+            overflow: visible;
+        }
+        
+        .swiper-container {
+            overflow: visible;
+        }
+        
+        /* Ensure parent containers don't clip the overflow */
+        .swiper-slide {
+            overflow: visible;
+        }
     }
 
     /* Improve mobile scrolling */
