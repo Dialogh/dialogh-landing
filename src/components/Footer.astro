@@ -5,66 +5,64 @@ import Logo from "../assets/logo.svg";
 import { Icon } from "astro-icon/components";
 ---
 
-<footer role="contentinfo" aria-label="Site footer"
-  class="min-h-[40dvh] sm:min-h-[50dvh] relative w-full rounded-2xl flex flex-col justify-between overflow-hidden"
-  style="background: linear-gradient(358.01deg, rgba(245, 242, 236, 0.95) 2.0%, rgba(255, 255, 255, 0.3) 89.55%);"
+<footer
+  role="contentinfo"
+  aria-label="Site footer"
+  class="relative w-full rounded-2xl overflow-hidden"
+  style="background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.4) 30%, rgba(245,242,236,0.95) 100%);"
 >
-  <span class="uppercase hidden md:block text-[#6765631A] w-full md:text-[2vw] lg:text-[23vw] text-center">Dialogh</span>
+  <!-- Large decorative wordmark -->
+  <span class="uppercase hidden md:block text-[#6765631A] w-full md:text-[2vw] lg:text-[23vw] text-center select-none">Dialogh</span>
 
-  <div class="max-w-4xl w-full mx-auto flex flex-col text-base sm:text-lg lg:text-xl gap-6 sm:gap-8 md:gap-12 justify-center px-5 sm:px-6 md:px-8 py-8 sm:py-10">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
-      <a href="/" class="flex items-center gap-2.5 sm:gap-3 text-[#1a1a1a] hover:text-[#000] transition-colors" aria-label="Dialogh homepage">
-        <Image src={Logo} alt="Dialogh logo" class="w-7 h-7 sm:w-8 sm:h-8" />
-        <span class="font-semibold text-xl sm:text-2xl">dialogh</span>
+  <!-- Main footer content -->
+  <div class="max-w-5xl w-full mx-auto px-5 sm:px-8 py-8 sm:py-10">
+    <!-- Top row: logo + socials -->
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 text-[#1a1a1a] hover:text-black transition-colors" aria-label="Dialogh homepage">
+        <Image src={Logo} alt="Dialogh logo" class="w-6 h-6 sm:w-7 sm:h-7" />
+        <span class="font-semibold text-lg sm:text-xl">dialogh</span>
       </a>
 
-      <div class="flex items-center gap-3 sm:gap-4">
-        <a href="https://dsc.gg/dialogh" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on Discord" class="text-[#1a1a1a] hover:text-[#5865F2] transition-colors p-1">
-          <Icon name="simple-icons:discord" class="w-5 h-5 sm:w-6 sm:h-6" />
+      <div class="flex items-center gap-1">
+        <a href="https://dsc.gg/dialogh" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on Discord" class="text-[#1a1a1a]/50 hover:text-[#5865F2] transition-colors p-2">
+          <Icon name="simple-icons:discord" class="w-[18px] h-[18px] sm:w-5 sm:h-5" />
         </a>
-        <a href="https://www.instagram.com/dialogh.in/" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on Instagram" class="text-[#1a1a1a] hover:text-[#E4405F] transition-colors p-1">
-          <Icon name="simple-icons:instagram" class="w-5 h-5 sm:w-6 sm:h-6" />
+        <a href="https://www.instagram.com/dialogh.in/" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on Instagram" class="text-[#1a1a1a]/50 hover:text-[#E4405F] transition-colors p-2">
+          <Icon name="simple-icons:instagram" class="w-[18px] h-[18px] sm:w-5 sm:h-5" />
         </a>
-        <a href="https://www.linkedin.com/company/dialogh-community/" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on LinkedIn" class="text-[#1a1a1a] hover:text-[#0A66C2] transition-colors p-1">
-          <Icon name="simple-icons:linkedin" class="w-5 h-5 sm:w-6 sm:h-6" />
+        <a href="https://www.linkedin.com/company/dialogh-community/" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on LinkedIn" class="text-[#1a1a1a]/50 hover:text-[#0A66C2] transition-colors p-2">
+          <Icon name="simple-icons:linkedin" class="w-[18px] h-[18px] sm:w-5 sm:h-5" />
         </a>
-        <a href="mailto:dialogh-community@gmail.com" aria-label="Email Dialogh" class="text-[#1a1a1a] hover:text-[#EA4335] transition-colors p-1">
-          <Icon name="simple-icons:gmail" class="w-5 h-5 sm:w-6 sm:h-6" />
+        <a href="mailto:dialogh-community@gmail.com" aria-label="Email Dialogh" class="text-[#1a1a1a]/50 hover:text-[#EA4335] transition-colors p-2">
+          <Icon name="simple-icons:gmail" class="w-[18px] h-[18px] sm:w-5 sm:h-5" />
+        </a>
+        <a href="https://chat.whatsapp.com/D5gc4u5IAneLK7fmI2o7EP" target="_blank" rel="noopener noreferrer" aria-label="Dialogh on WhatsApp" class="text-[#1a1a1a]/50 hover:text-[#25D366] transition-colors p-2">
+          <Icon name="simple-icons:whatsapp" class="w-[18px] h-[18px] sm:w-5 sm:h-5" />
         </a>
       </div>
     </div>
 
-    <nav aria-label="Footer navigation" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 border-t border-[#1a1a1a]/10 pt-6">
-      <ul class="flex text-[#2a2a2a] flex-col sm:flex-row gap-3 sm:gap-5 md:gap-6 text-sm sm:text-base">
-        <li><a href="/about" class="hover:text-[#000] hover:underline transition-colors">About</a></li>
-        <li><a href="/events" class="hover:text-[#000] hover:underline transition-colors">Events</a></li>
-        <li><a href="/community-guidelines" class="hover:text-[#000] hover:underline transition-colors">Community guidelines</a></li>
-        <li><a href="/privacy" class="hover:text-[#000] hover:underline transition-colors">Privacy policy</a></li>
-      </ul>
+    <!-- Divider -->
+    <div class="border-t border-[#1a1a1a]/8 my-6"></div>
 
-      <div class="flex text-[#2a2a2a] items-center gap-4">
-        <a href="https://www.dialogh.in" class="text-sm hover:text-[#000] hover:underline transition-colors">&copy; <span class="sr-only">Copyright</span> dialogh.in • <time datetime={new Date().getFullYear().toString()}>{new Date().getFullYear()}</time></a>
-      </div>
-    </nav>
+    <!-- Bottom row: nav links + copyright -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <nav aria-label="Footer navigation">
+        <ul class="flex flex-wrap gap-x-5 gap-y-2 text-[13px] sm:text-sm text-[#1a1a1a]/50">
+          <li><a href="/community-guidelines" class="hover:text-[#1a1a1a] transition-colors">Community guidelines</a></li>
+          <li><a href="/privacy" class="hover:text-[#1a1a1a] transition-colors">Privacy policy</a></li>
+          <li><a href="/events/ai-hour-2" class="hover:text-[#1a1a1a] transition-colors">Events</a></li>
+        </ul>
+      </nav>
 
-    <div class="text-xs sm:text-sm text-[#4a4a4a] -mt-2 sm:mt-0">
-      <span>Built with <span aria-hidden="true" class="text-red-500">♥</span> by the Dialogh community.</span>
+      <p class="text-[13px] sm:text-sm text-[#1a1a1a]/35">
+        &copy; <time datetime={new Date().getFullYear().toString()}>{new Date().getFullYear()}</time> dialogh.in
+      </p>
     </div>
   </div>
-
 </footer>
 
 <script type="module">
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('back-to-top');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-  });
-
-  // Ensure external links opened via target="_blank" are safe
   document.addEventListener('astro:page-load', () => {
     document.querySelectorAll('a[target="_blank"]').forEach(a => {
       if (!a.rel.includes('noopener')) a.rel += ' noopener';
