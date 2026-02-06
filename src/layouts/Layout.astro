@@ -7,9 +7,32 @@ import Toast from "../components/Toast.astro";
 
 interface Props {
     title: string;
+    description?: string;
+    ogImage?: string;
+    ogType?: string;
+    url?: string;
+    keywords?: string;
+    jsonLd?: Record<string, unknown>;
 }
 
-const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
+const defaults = {
+    title: "Dialogh - Community for tech enthusiasts",
+    description: "Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!",
+    ogImage: "https://dialogh.in/og.png",
+    ogType: "website",
+    url: "https://dialogh.in",
+    keywords: "tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation",
+};
+
+const {
+    title = defaults.title,
+    description = defaults.description,
+    ogImage = defaults.ogImage,
+    ogType = defaults.ogType,
+    url = defaults.url,
+    keywords = defaults.keywords,
+    jsonLd,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -61,40 +84,25 @@ const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
         <meta charset="utf-8" />
         <!-- Primary Meta Tags -->
         <title>{title}</title>
-        <meta name="title" content="Dialogh - Community for tech enthusiasts" />
-        <meta
-            name="description"
-            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-        />
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
         <meta name="author" content="Dialogh" />
 
         <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dialogh.in" />
-        <meta
-            property="og:title"
-            content="Dialogh - Community for tech enthusiasts"
-        />
-        <meta
-            property="og:description"
-            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-        />
-        <meta property="og:image" content="https://dialogh.in/og.png" />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
         <meta property="og:site_name" content="Dialogh" />
         <meta property="og:locale" content="en_US" />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://dialogh.in" />
-        <meta
-            name="twitter:title"
-            content="Dialogh - Community for tech enthusiasts"
-        />
-        <meta
-            name="twitter:description"
-            content="Join Dialogh, the ultimate online community for designers and developers. Connect, collaborate, and learn with like-minded professionals through engaging projects, workshops, and events. Become part of a thriving network of creators today!"
-        />
-        <meta name="twitter:image" content="https://dialogh.in/og.png" />
+        <meta property="twitter:url" content={url} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:creator" content="@dialogh_in" />
 
         <!-- Mobile specific meta tags -->
@@ -105,36 +113,31 @@ const { title = "Dialogh - Community for tech enthusiasts" } = Astro.props;
 
         <!-- Additional Meta Tags -->
         <meta name="theme-color" content="#00000" />
-        <meta
-            name="keywords"
-            content="tech community, developers, designers, collaboration, projects, workshops, events, creators, coding, programming, web development, UI/UX, innovation"
-        />
+        <meta name="keywords" content={keywords} />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="revisit-after" content="7 days" />
         <meta name="language" content="English" />
 
         <!-- Links -->
-        <link rel="canonical" href="https://dialogh.in" />
+        <link rel="canonical" href={url} />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
         <!-- Scripts -->
 
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "Dialogh",
-                "url": "https://dialogh.in",
-                "sameAs": [
-                    "https://instagram.com/dialogh.in",
-                    "https://linkedin.com/company/dialogh-community",
-                    "https://dsc.gg/dialogh"
-                ]
-            }
-        </script>
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd ?? {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Dialogh",
+            "url": "https://dialogh.in",
+            "sameAs": [
+                "https://instagram.com/dialogh.in",
+                "https://linkedin.com/company/dialogh-community",
+                "https://dsc.gg/dialogh"
+            ]
+        })} />
 
         <script
             defer

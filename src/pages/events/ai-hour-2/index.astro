@@ -4,9 +4,56 @@ import Footer from "../../../components/Footer.astro";
 import { Image } from "astro:assets";
 import Logo from "../../../assets/logo.svg";
 import { Icon } from "astro-icon/components";
+
+const seo = {
+  title: "AI Hour 2: Real Talk About Working With AI — Dialogh",
+  description: "Join a free, small-group online discussion on Feb 13, 2026 at 9 PM IST. Designers, developers, writers & students share honest AI experiences — no corporate fluff. 15–20 spots only.",
+  url: "https://dialogh.in/events/ai-hour-2",
+  ogImage: "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/6984ec192fa14_the-ai-hour-2-open-discussion-on-ai-in-practice.png?d=1920x557",
+  ogType: "article",
+  keywords: "AI discussion, AI tools, ChatGPT, Claude, Midjourney, Copilot, designers, developers, online event, free event, Dialogh, AI Hour, community event",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "AI Hour 2: Real Talk About Working With AI",
+    "description": "An open discussion for anyone who uses AI tools in their work — honest takes, no corporate fluff. Share practical experiences across design, development, writing, and more.",
+    "startDate": "2026-02-13T21:00:00+05:30",
+    "endDate": "2026-02-13T22:00:00+05:30",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://dialogh.in/events/ai-hour-2"
+    },
+    "image": "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/6984ec192fa14_the-ai-hour-2-open-discussion-on-ai-in-practice.png?d=1920x557",
+    "organizer": {
+      "@type": "Organization",
+      "name": "Dialogh",
+      "url": "https://dialogh.in"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/LimitedAvailability",
+      "url": "https://luma.com/4w30x4gd?tk=G8O4xH",
+      "validFrom": "2026-02-06"
+    },
+    "maximumAttendeeCapacity": 20,
+    "isAccessibleForFree": true
+  }
+};
 ---
 
-<Layout title="AI Hour 2: Real Talk About Working With AI — Dialogh">
+<Layout
+  title={seo.title}
+  description={seo.description}
+  url={seo.url}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+  keywords={seo.keywords}
+  jsonLd={seo.jsonLd}
+>
   <main class="min-h-dvh bg-primary">
     <!-- Hero — full viewport, dark background -->
     <div class="h-dvh w-full flex flex-col px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
