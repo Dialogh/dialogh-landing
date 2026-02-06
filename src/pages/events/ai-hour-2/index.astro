@@ -1,0 +1,316 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Footer from "../../../components/Footer.astro";
+import { Image } from "astro:assets";
+import Logo from "../../../assets/logo.svg";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="AI Hour 2: Real Talk About Working With AI — Dialogh">
+  <main class="min-h-dvh bg-primary">
+    <!-- Hero — full viewport, dark background -->
+    <div class="h-dvh w-full flex flex-col px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+      <!-- Inline light header -->
+      <nav class="relative z-10 flex items-center justify-between py-3 sm:py-4">
+        <a href="/" class="flex items-center gap-2 text-secondary/50 hover:text-secondary/80 transition-colors duration-200">
+          <Image
+            src={Logo}
+            alt="Dialogh Logo"
+            class="inline-block w-5 h-5 sm:w-6 sm:h-6 brightness-0 invert opacity-50"
+          />
+          <span class="sr-only">dialogh</span>
+        </a>
+
+        <ul class="flex space-x-4 lg:space-x-6 items-center">
+          <li>
+            <a href="https://dsc.gg/dialogh" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200">
+              <Icon class="text-secondary/50 hover:text-secondary/80 sm:w-5.5 sm:h-6 w-5 h-5 transition-colors duration-200" name="simple-icons:discord" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/dialogh.in/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200">
+              <Icon class="text-secondary/50 hover:text-secondary/80 sm:w-5 h-5 w-5 transition-colors duration-200" name="simple-icons:instagram" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/dialogh-community/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200">
+              <Icon class="text-secondary/50 hover:text-secondary/80 sm:w-5 h-5 w-5 transition-colors duration-200" name="simple-icons:linkedin" />
+            </a>
+          </li>
+          <li>
+            <a href="mailto:dialogh-community@gmail.com" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200">
+              <Icon class="text-secondary/50 hover:text-secondary/80 sm:w-5.5 sm:h-6 w-5 h-5 transition-colors duration-200" name="simple-icons:gmail" />
+            </a>
+          </li>
+          <li>
+            <a href="https://chat.whatsapp.com/D5gc4u5IAneLK7fmI2o7EP" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200">
+              <Icon class="text-secondary/50 hover:text-[#25D366]/80 sm:w-5 h-5 w-5 transition-colors duration-200" name="simple-icons:whatsapp" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Banner image -->
+      <div class="rounded-2xl overflow-hidden flex-shrink-0 mt-12">
+        <picture>
+          <!-- Wide banner for desktop (lg+) -->
+          <source
+            media="(min-width: 768px)"
+            srcset="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/6984ec192fa14_the-ai-hour-2-open-discussion-on-ai-in-practice.png?d=1920x557"
+          />
+          <!-- Square/portrait banner for tablet & mobile -->
+          <img
+            src="https://instagram.fbom20-1.fna.fbcdn.net/v/t51.82787-15/629463780_17898081750390424_7920250064302861045_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzgyNjA2MjQzNDc3MjQyNDAwNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMDB4MTEwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=GKlMu_984OoQ7kNvwHj0hjJ&_nc_oc=AdkOexVauEInHV_4C9UHQgfGF3lrR-vEHMhe-J1gB3ZFMYbrDAll-xkTazXZasVMIWY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fbom20-1.fna&_nc_gid=u-u5JJ0IkAlYvUMJSakmCw&oh=00_AftpenicurWNKgzx3XOHGOfLdSmJLlAiWBnGXRW9v4P_HA&oe=698B6399"
+            alt="AI Hour 2: Real Talk About Working With AI"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </picture>
+      </div>
+
+      <!-- Event info below banner -->
+      <div class="flex-1 flex flex-col justify-center pt-6">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 lg:items-end">
+          <!-- Left: title + description -->
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="bg-accent-1/20 text-secondary/80 text-xs font-medium px-3 py-1.5 rounded-full">
+                Upcoming Event
+              </span>
+              <span class="bg-white/10 text-secondary/60 text-xs font-medium px-3 py-1.5 rounded-full">
+                Free
+              </span>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-secondary">
+              AI Hour 2: Real Talk<br class="hidden sm:block" /> About Working With AI
+            </h1>
+
+            <p class="text-sm sm:text-base md:text-lg text-white/55 mt-4 max-w-xl">
+              An open discussion for anyone who uses AI tools in their work — honest takes, no corporate fluff.
+            </p>
+          </div>
+
+          <!-- Right: meta + CTA -->
+          <div class="lg:w-80 shrink-0">
+            <div class="flex flex-col gap-3 text-sm text-white/70 mb-6">
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>February 13, 2026</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>9:00 – 10:00 PM IST</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span>Online &middot; Google Meet</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-white/30 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>15–20 participants</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <a
+                href="https://luma.com/4w30x4gd?tk=G8O4xH"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-secondary text-primary py-3 px-6 rounded-full font-medium text-sm transition-all duration-200 hover:bg-secondary/90 flex items-center justify-center gap-2"
+              >
+                Register on Luma
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a
+                href="https://unstop.com/p/the-ai-hour-2-open-discussion-on-ai-in-practice-dialogh-1635609"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-white/5 hover:bg-white/10 text-white/80 border border-white/15 hover:border-white/30 py-3 px-6 rounded-full font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                Register on Unstop
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content sections on dark background -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="grid gap-12 sm:gap-16 lg:grid-cols-2">
+
+        <!-- Who is this for -->
+        <section>
+          <h2 class="text-xl sm:text-2xl text-secondary mb-2">Who is this for?</h2>
+          <p class="text-white/40 text-sm mb-6">If any of these sound like you, you'll fit right in.</p>
+          <div class="flex flex-col gap-3">
+            <div class="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-accent-1/20 rounded-2xl p-5 sm:p-6 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-xl bg-accent-1/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-4.5 h-4.5 text-accent-1/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">AI tool users</p>
+                  <p class="text-white/50 text-sm leading-relaxed">
+                    You use Claude, ChatGPT, Midjourney, Copilot, or similar tools in your work or side projects
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-accent-2/20 rounded-2xl p-5 sm:p-6 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-xl bg-accent-2/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-4.5 h-4.5 text-accent-2/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Any discipline, any level</p>
+                  <p class="text-white/50 text-sm leading-relaxed">
+                    Designers, developers, writers, students, analysts — your background doesn't matter, your curiosity does
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-accent-1/20 rounded-2xl p-5 sm:p-6 transition-all duration-300">
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-xl bg-accent-1/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-4.5 h-4.5 text-accent-1/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Real talk seekers</p>
+                  <p class="text-white/50 text-sm leading-relaxed">
+                    You want honest discussion and real experiences, not polished corporate presentations
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- What to expect -->
+        <section>
+          <h2 class="text-xl sm:text-2xl text-secondary mb-2">What to expect</h2>
+          <p class="text-white/40 text-sm mb-6">A structured yet open session designed for real exchange.</p>
+          <div class="flex flex-col gap-3">
+            <div class="relative bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.1] rounded-2xl p-5 sm:p-6 transition-all duration-300 group">
+              <div class="flex items-start gap-4">
+                <span class="text-[11px] font-mono text-accent-1/60 bg-accent-1/[0.08] w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-accent-1/[0.12] transition-colors duration-300">01</span>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Cross-disciplinary dialogue</p>
+                  <p class="text-white/50 text-sm leading-relaxed">Open discussion on practical AI experiences — design workflows, dev tooling, writing, research, and more</p>
+                </div>
+              </div>
+            </div>
+            <div class="relative bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.1] rounded-2xl p-5 sm:p-6 transition-all duration-300 group">
+              <div class="flex items-start gap-4">
+                <span class="text-[11px] font-mono text-accent-1/60 bg-accent-1/[0.08] w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-accent-1/[0.12] transition-colors duration-300">02</span>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Unpopular opinions round</p>
+                  <p class="text-white/50 text-sm leading-relaxed">Hot takes that challenge assumptions and spark real, unscripted debate</p>
+                </div>
+              </div>
+            </div>
+            <div class="relative bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.1] rounded-2xl p-5 sm:p-6 transition-all duration-300 group">
+              <div class="flex items-start gap-4">
+                <span class="text-[11px] font-mono text-accent-1/60 bg-accent-1/[0.08] w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-accent-1/[0.12] transition-colors duration-300">03</span>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Interactive reveals</p>
+                  <p class="text-white/50 text-sm leading-relaxed">See how others approach the same AI problems differently — live comparisons, not slides</p>
+                </div>
+              </div>
+            </div>
+            <div class="relative bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.1] rounded-2xl p-5 sm:p-6 transition-all duration-300 group">
+              <div class="flex items-start gap-4">
+                <span class="text-[11px] font-mono text-accent-1/60 bg-accent-1/[0.08] w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-accent-1/[0.12] transition-colors duration-300">04</span>
+                <div>
+                  <p class="text-white/90 text-sm sm:text-[15px] font-medium mb-1">Small group, big ideas</p>
+                  <p class="text-white/50 text-sm leading-relaxed">Capped at 15–20 people so everyone gets heard, not just the loudest voice</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Format details -->
+      <section class="mt-16 sm:mt-24">
+        <h2 class="text-xl sm:text-2xl text-secondary mb-5">Format</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 sm:p-5">
+            <span class="text-white/35 text-xs block mb-1">Duration</span>
+            <span class="text-white/90 text-sm sm:text-base">~60 min</span>
+          </div>
+          <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 sm:p-5">
+            <span class="text-white/35 text-xs block mb-1">Platform</span>
+            <span class="text-white/90 text-sm sm:text-base">Google Meet</span>
+          </div>
+          <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 sm:p-5">
+            <span class="text-white/35 text-xs block mb-1">Group size</span>
+            <span class="text-white/90 text-sm sm:text-base">15–20</span>
+          </div>
+          <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 sm:p-5">
+            <span class="text-white/35 text-xs block mb-1">Cost</span>
+            <span class="text-white/90 text-sm sm:text-base">Free</span>
+          </div>
+          <div class="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 sm:p-5 col-span-2 sm:col-span-1">
+            <span class="text-white/35 text-xs block mb-1">Pre-event</span>
+            <span class="text-white/90 text-sm sm:text-base">3-min form</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA -->
+      <section class="mt-16 sm:mt-24 text-center">
+        <p class="text-white/40 text-sm mb-3">Spots are limited</p>
+        <h2 class="text-2xl sm:text-3xl text-secondary mb-3">
+          This isn't a webinar.
+        </h2>
+        <p class="text-white/50 text-sm sm:text-base mb-8 max-w-md mx-auto">
+          It's a real conversation with a small group. Register before it fills up.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="https://luma.com/4w30x4gd?tk=G8O4xH"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-secondary text-primary py-3 px-8 rounded-full font-medium text-sm transition-all duration-200 hover:bg-secondary/90 inline-flex items-center gap-2 justify-center"
+          >
+            Register on Luma
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a
+            href="https://unstop.com/p/the-ai-hour-2-open-discussion-on-ai-in-practice-dialogh-1635609"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white/5 hover:bg-white/10 text-white/80 border border-white/15 hover:border-white/30 py-3 px-8 rounded-full font-medium text-sm transition-all duration-200 inline-flex items-center gap-2 justify-center"
+          >
+            Register on Unstop
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="m-2">
+      <Footer />
+    </div>
+  </main>
+</Layout>
