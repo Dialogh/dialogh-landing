@@ -1,0 +1,55 @@
+---
+// Floating announcement banner for upcoming events
+---
+
+<a
+  href="/events/ai-hour-2"
+  id="announcement-banner"
+  class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 bg-secondary text-primary px-4 sm:px-6 py-3 rounded-full shadow-lg shadow-black/20 flex items-center gap-3 sm:gap-4 max-w-[calc(100%-2rem)] hover:shadow-xl transition-all duration-300 hover:scale-[1.02] group"
+>
+  <span class="relative flex h-2.5 w-2.5 shrink-0">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-1 opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-1"></span>
+  </span>
+  <span class="text-xs sm:text-sm font-medium truncate">
+    <span class="hidden sm:inline">AI Hour 2 — Feb 13 &middot; Real Talk About Working With AI &middot;</span>
+    <span class="sm:hidden">AI Hour 2 — Feb 13 &middot;</span>
+    <span class="text-black/50 group-hover:text-black/70 transition-colors">Register now</span>
+  </span>
+  <svg class="w-4 h-4 shrink-0 text-black/40 group-hover:text-black/70 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+  </svg>
+
+  <button
+    id="dismiss-banner"
+    class="ml-1 p-1 rounded-full hover:bg-black/10 transition-colors text-black/30 hover:text-black/60"
+    aria-label="Dismiss announcement"
+  >
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("announcement-banner");
+    const dismissBtn = document.getElementById("dismiss-banner");
+
+    if (sessionStorage.getItem("banner-dismissed")) {
+      banner?.remove();
+      return;
+    }
+
+    if (dismissBtn && banner) {
+      dismissBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        banner.style.opacity = "0";
+        banner.style.transform = "translateX(-50%) translateY(20px)";
+        setTimeout(() => banner.remove(), 300);
+        sessionStorage.setItem("banner-dismissed", "true");
+      });
+    }
+  });
+</script>
