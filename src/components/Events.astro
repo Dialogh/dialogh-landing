@@ -7,6 +7,14 @@ import Founding from "../assets/images/founding.png";
 import PixelPerfect from "../assets/images/pixel-perfect.png";
 let cardElements = [
   {
+    title: "AI Hour 2",
+    description:
+      "Real talk about working with AI — an open discussion for anyone who uses AI tools in their work.",
+    image: AiHour,
+    status: "Upcoming",
+    href: "/events/ai-hour-2/",
+  },
+  {
     title: "Ai Hour",
     description:
       "Open discussion on how AI shows up in real life — honest takes, no hype.",
@@ -72,6 +80,7 @@ let cardElements = [
               description={card.description}
               image={card.image}
               status={card?.status}
+              href={card?.href}
             />
           ))
         }
